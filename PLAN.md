@@ -48,9 +48,9 @@ Grades, rótulos técnicos e superfícies limpas mostram que pele e unhas recebe
    - [x] Excluir “transforme sua beleza”, “realce sua essência”, “cuidar de você é nossa missão” e variações.
 
 4. [ ] **Arquitetura de arquivos e WhatsApp**
-   - [ ] Separar seções, UI, folhas clientes, conteúdo e utilitários conforme a árvore deste plano.
-   - [ ] Implementar `src/lib/wa.ts` com `encodeURIComponent` e um único número de origem.
-   - [ ] Gerar CTA individual em cada card com mensagem que cite exatamente o serviço selecionado.
+   - [x] Separar seções, UI, folhas clientes, conteúdo e utilitários conforme a árvore deste plano.
+   - [x] Implementar `src/lib/wa.ts` com `encodeURIComponent` e um único número de origem.
+   - [ ] Gerar CTA individual em cada card com mensagem que cite exatamente o serviço selecionado (será concluído com os cards, após a aprovação das fundações).
 
 5. [ ] **Direção visual “instrumento de precisão e matéria”**
    - [ ] Traduzir a referência consultório suíço + fotografia japonesa de salão em superfícies foscas, muito ar e sinalização técnica.
