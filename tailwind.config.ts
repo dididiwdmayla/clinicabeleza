@@ -21,9 +21,9 @@ const config: Config = {
         foco: "var(--foco)",
       },
       fontFamily: {
-        display: ["var(--fonte-display)"],
-        texto: ["var(--fonte-texto)"],
-        tecnica: ["var(--fonte-tecnica)"],
+        display: ["var(--fonte-display, Arial)", "sans-serif"],
+        texto: ["var(--fonte-texto, Arial)", "sans-serif"],
+        tecnica: ["var(--fonte-tecnica, 'Courier New')", "monospace"],
       },
       fontSize: {
         "-1": "var(--txt--1)",

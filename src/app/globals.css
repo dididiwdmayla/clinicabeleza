@@ -15,9 +15,6 @@
   --acento-tinta: #19140c;
   --acento-suave: #3a2e1d;
   --foco: #f2bb61;
-  --fonte-display: Arial, sans-serif;
-  --fonte-texto: Arial, sans-serif;
-  --fonte-tecnica: "Courier New", monospace;
   --txt--1: clamp(0.75rem, calc(0.868rem - 0.12vw), 0.833rem);
   --txt-0: 1rem;
   --txt-1: clamp(1.2rem, calc(1.16rem + 0.2vw), 1.333rem);
@@ -69,7 +66,7 @@ body {
   position: relative;
   background: var(--bg);
   color: var(--tinta);
-  font-family: var(--fonte-texto);
+  font-family: var(--fonte-texto, Arial, sans-serif);
   font-size: var(--txt-0);
   line-height: 1.6;
   transition: background-color var(--dur-rapida) linear, color var(--dur-rapida) linear;
@@ -129,7 +126,7 @@ a {
 
 .fundacao__local {
   color: var(--tinta-3);
-  font-family: var(--fonte-tecnica);
+  font-family: var(--fonte-tecnica, "Courier New", monospace);
   font-size: var(--txt--1);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -148,7 +145,7 @@ a {
 .fundacao__titulo {
   max-width: 11ch;
   margin: var(--esp-4) 0 var(--esp-5);
-  font-family: var(--fonte-display);
+  font-family: var(--fonte-display, Arial, sans-serif);
   font-size: var(--txt-7);
   font-stretch: 88%;
   font-variation-settings: "wdth" 88;
@@ -195,7 +192,7 @@ a {
 
 .fundacao__codigo {
   color: var(--tinta-3);
-  font-family: var(--fonte-tecnica);
+  font-family: var(--fonte-tecnica, "Courier New", monospace);
   font-size: var(--txt--1);
   font-variant-numeric: tabular-nums;
 }
@@ -217,7 +214,7 @@ a {
   border-right: 0.0625rem solid var(--linha);
   border-bottom: 0.0625rem solid var(--linha);
   color: var(--tinta-3);
-  font-family: var(--fonte-tecnica);
+  font-family: var(--fonte-tecnica, "Courier New", monospace);
   font-size: var(--txt--1);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -259,7 +256,7 @@ a {
 }
 
 .fundacao__dado strong {
-  font-family: var(--fonte-display);
+  font-family: var(--fonte-display, Arial, sans-serif);
   font-size: var(--txt-2);
   font-weight: 580;
   letter-spacing: -0.02em;

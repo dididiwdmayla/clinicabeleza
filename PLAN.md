@@ -66,11 +66,11 @@ Grades, rótulos técnicos e superfícies limpas mostram que pele e unhas recebe
    - [x] Definir tokens `--txt--1` a `--txt-7` com `clamp()`, razão 1.2 mobile/1.333 desktop e corpo de 16px.
    - [x] Proibir `font-size` em px cru nos componentes e aplicar números tabulares aos preços.
 
-7. [ ] **Fontes locais**
-   - [ ] Copiar os três arquivos validados de `/tmp/item0-fonts/` para `public/fontes/` e incluí-los no commit.
-   - [ ] Configurar `next/font/local` com `display: 'swap'` e fallbacks de métricas ajustadas.
-   - [ ] Usar `preload: true` somente em Bricolage e Instrument Sans; `preload: false` em IBM Plex Mono.
-   - [ ] Confirmar no build que não existe referência a Google Fonts ou CDN.
+7. [x] **Fontes locais**
+   - [x] Copiar os três arquivos validados de `/tmp/item0-fonts/` para `public/fontes/` e incluí-los no commit.
+   - [x] Configurar `next/font/local` com `display: 'swap'` e fallbacks de métricas ajustadas.
+   - [x] Usar `preload: true` somente em Bricolage e Instrument Sans; `preload: false` em IBM Plex Mono.
+   - [x] Confirmar no build que não existe referência a Google Fonts ou CDN.
 
 8. [ ] **Quatro temas no mesmo código**
    - [ ] Implementar `data-theme="noite | dia | oxido | mineral"` na raiz.
