@@ -39,20 +39,17 @@ export function Hero() {
         </div>
 
         <figure className="hero__visual" data-revelar style={{ "--i": 2 } as CSSProperties}>
-          <picture>
-            <source media="(min-width: 48rem)" srcSet="/img/hero-paisagem.webp" />
-            <Image
-              alt=""
-              fill
-              priority
-              sizes="(min-width: 48rem) 42vw, calc(100vw - 2 * var(--gutter))"
-              src="/img/hero-retrato.webp"
-              unoptimized
-            />
-          </picture>
+          <Image
+            alt="Kit técnico de manicure com alicate, palito, lixa e bloco polidor."
+            fill
+            priority
+            sizes="(min-width: 48rem) 42vw, calc(100vw - 2 * var(--gutter))"
+            src="/img/assets/h-kit-manicure-explodido.webp"
+            unoptimized
+          />
           <CanvasHero />
           <figcaption>
-            <span>Campo 09 / leitura de superfície</span>
+            <span>Amostra 08 / kit manicure explodido</span>
             <span>{contato.cidade}</span>
           </figcaption>
         </figure>

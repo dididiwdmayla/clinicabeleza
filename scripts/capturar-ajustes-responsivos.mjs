@@ -53,16 +53,33 @@ try {
       const textoHero = document.querySelector(".hero__texto");
       const faixaTextoHero = document.createRange();
       faixaTextoHero.selectNodeContents(textoHero);
+      const linhas = Object.values(Object.groupBy(cartoes, (cartao) => String(Math.round(cartao.top))));
+      const botoes = Array.from(document.querySelectorAll(".servicos__cartao > a"), (elemento) => elemento.getBoundingClientRect());
+      const imagemHero = document.querySelector(".hero__visual img");
 
       const intersectam = alternador && provas
         ? !(alternador.right <= provas.left || alternador.left >= provas.right || alternador.bottom <= provas.top || alternador.top >= provas.bottom)
         : null;
 
       return {
-        alternador: alternador && { altura: Math.round(alternador.height), largura: Math.round(alternador.width) },
+        alternador: alternador && {
+          altura: Math.round(alternador.height),
+          direita: Math.round(innerWidth - alternador.right),
+          largura: Math.round(alternador.width),
+          topo: Math.round(alternador.top),
+        },
         colisaoAlternadorProvas: intersectam,
         grade: grade && getComputedStyle(grade).gridTemplateColumns,
+        linhasCards: linhas.map((linha) => {
+          const indices = linha.map((cartao) => cartoes.indexOf(cartao));
+          return {
+            alturas: linha.map((cartao) => Math.round(cartao.height)),
+            botoesBase: indices.map((indice) => Math.round(botoes[indice].bottom)),
+            esquerdas: linha.map((cartao) => Math.round(cartao.left)),
+          };
+        }),
         hero: {
+          imagem: imagemHero?.getAttribute("src"),
           larguraTexto: Math.round(textoHero.getBoundingClientRect().width),
           linhasTexto: faixaTextoHero.getClientRects().length,
         },
@@ -83,12 +100,10 @@ try {
     if (quadro.nome === "390") {
       await pagina.screenshot({ animations: "disabled", path: path.join(destino, "dia-390-viewport.png") });
     } else {
-      if (quadro.nome === "1440") {
-        await pagina.locator("#hero").screenshot({
-          animations: "disabled",
-          path: path.join(destino, "dia-1440-hero.png"),
-        });
-      }
+      await pagina.locator("#hero").screenshot({
+        animations: "disabled",
+        path: path.join(destino, `dia-${quadro.nome}-hero.png`),
+      });
       await pagina.addStyleTag({ content: ".alternador-tema, .pular-conteudo, .topo { display: none !important; }" });
       await pagina.locator("#servicos").screenshot({
         animations: "disabled",
