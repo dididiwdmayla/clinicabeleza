@@ -52,12 +52,12 @@ Grades, rótulos técnicos e superfícies limpas mostram que pele e unhas recebe
    - [x] Implementar `src/lib/wa.ts` com `encodeURIComponent` e um único número de origem.
    - [ ] Gerar CTA individual em cada card com mensagem que cite exatamente o serviço selecionado (será concluído com os cards, após a aprovação das fundações).
 
-5. [ ] **Direção visual “instrumento de precisão e matéria”**
-   - [ ] Traduzir a referência consultório suíço + fotografia japonesa de salão em superfícies foscas, muito ar e sinalização técnica.
-   - [ ] Reservar brilho ao acento e às imagens de unha/gel.
-   - [ ] Usar grão estático em tile com opacidade máxima de `0.05` e filetes estruturais de `1px`.
-   - [ ] Usar rótulos técnicos monoespaçados, em caixa-alta e com `letter-spacing: 0.08em`.
-   - [ ] Não usar rosa-claro, serifas Playfair/Cormorant, dourado, mármore, folhagem, lótus ou gradiente rosa-lilás.
+5. [x] **Direção visual “instrumento de precisão e matéria”**
+   - [x] Traduzir a referência consultório suíço + fotografia japonesa de salão em superfícies foscas, muito ar e sinalização técnica.
+   - [x] Reservar brilho ao acento e às imagens de unha/gel.
+   - [x] Usar grão estático em tile com opacidade máxima de `0.05` e filetes estruturais de `1px`.
+   - [x] Usar rótulos técnicos monoespaçados, em caixa-alta e com `letter-spacing: 0.08em`.
+   - [x] Não usar rosa-claro, serifas Playfair/Cormorant, dourado, mármore, folhagem, lótus ou gradiente rosa-lilás.
 
 6. [ ] **Tipografia e escala fluida**
    - [ ] Usar Bricolage Grotesque apenas em headline e títulos de seção, com tracking negativo, `line-height` entre `0.95` e `1.05` e `text-wrap: balance`.
