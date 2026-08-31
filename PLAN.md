@@ -82,11 +82,11 @@ Grades, rótulos técnicos e superfícies limpas mostram que pele e unhas recebe
    - [x] Persistir em `localStorage`, respeitar `prefers-color-scheme` na primeira visita e aplicar tema antes da primeira pintura.
    - [x] Evitar CLS e limitar transições de cor a 200ms.
 
-9. [ ] **Espaçamento, grid e contêiner**
-   - [ ] Criar escala de 4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 160 e 224px como tokens.
-   - [ ] Aplicar `--ritmo: clamp(72px, 11vw, 168px)` entre seções.
-   - [ ] Usar contêiner `min(100% - 2 * var(--gutter), 1280px)` com gutter fluido de 20–48px.
-   - [ ] Usar grid de 12/6/4 colunas em desktop/tablet/mobile e preservar leitura em telas estreitas.
+9. [x] **Espaçamento, grid e contêiner**
+   - [x] Criar escala de 4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 160 e 224px como tokens.
+   - [x] Aplicar `--ritmo: clamp(72px, 11vw, 168px)` entre seções.
+   - [x] Usar contêiner `min(100% - 2 * var(--gutter), 1280px)` com gutter fluido de 20–48px.
+   - [x] Usar grid de 12/6/4 colunas em desktop/tablet/mobile e preservar leitura em telas estreitas.
 
 10. [ ] **Imagens locais, placeholders e documentação**
     - [ ] Servir todas as imagens locais com `next/image`, sem hotlink.

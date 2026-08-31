@@ -160,6 +160,21 @@ a {
   color: var(--acento-tinta);
 }
 
+.conteiner {
+  width: min(calc(100% - 2 * var(--gutter)), 80rem);
+  margin-inline: auto;
+}
+
+.ritmo-secao {
+  padding-block: var(--ritmo);
+}
+
+.grade-responsiva {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--esp-4);
+}
+
 .fundacao {
   width: min(calc(100% - 2 * var(--gutter)), 80rem);
   min-height: 100svh;
@@ -419,6 +434,18 @@ a {
 
   .fundacao__dados {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 40rem) {
+  .grade-responsiva {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .grade-responsiva {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 }
 
