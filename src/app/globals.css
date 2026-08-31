@@ -203,7 +203,7 @@ a {
 .fundacao__grade {
   display: grid;
   gap: var(--esp-7);
-  padding-block: clamp(3rem, 8vw, 7rem);
+  padding-block: clamp(3rem, 5vw, 4.5rem);
 }
 
 .fundacao__intro {
@@ -214,7 +214,7 @@ a {
   max-width: 11ch;
   margin: var(--esp-4) 0 var(--esp-5);
   font-family: var(--fonte-display, Arial, sans-serif);
-  font-size: var(--txt-7);
+  font-size: var(--txt-5);
   font-stretch: 88%;
   font-variation-settings: "wdth" 88;
   font-weight: 620;
@@ -422,6 +422,10 @@ a {
 
   .fundacao__grade {
     grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .fundacao__titulo {
+    font-size: var(--txt-6);
   }
 
   .fundacao__intro {

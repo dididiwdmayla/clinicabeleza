@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 
 const temas = [
   { id: "noite", nome: "Noite" },
@@ -28,17 +28,19 @@ function obterTema(): Tema {
   return temaValido(tema) ? tema : "noite";
 }
 
-function assinarTema(aoMudar: () => void) {
-  window.addEventListener(eventoTema, aoMudar);
-  return () => window.removeEventListener(eventoTema, aoMudar);
-}
-
-function obterTemaServidor(): Tema {
-  return "noite";
-}
-
 export function AlternadorTema() {
-  const temaAtual = useSyncExternalStore(assinarTema, obterTema, obterTemaServidor);
+  const [temaAtual, setTemaAtual] = useState<Tema>("noite");
+
+  useEffect(() => {
+    const atualizarTema = () => setTemaAtual(obterTema());
+    const quadro = window.requestAnimationFrame(atualizarTema);
+    window.addEventListener(eventoTema, atualizarTema);
+
+    return () => {
+      window.cancelAnimationFrame(quadro);
+      window.removeEventListener(eventoTema, atualizarTema);
+    };
+  }, []);
 
   function escolherTema(tema: Tema) {
     document.documentElement.setAttribute("data-theme", tema);

@@ -4,6 +4,7 @@ out/
 dist/
 .vercel/
 *.log
+*.tsbuildinfo
 .DS_Store
 .env*
 !.env.example
@@ -11,4 +12,3 @@ upload/
 item0-*
 item01-*
 generate-item0-png.cjs
-
