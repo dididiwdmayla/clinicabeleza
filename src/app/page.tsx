@@ -2,6 +2,7 @@ import { Revelacao } from "@/components/clientes/Revelacao";
 import { Hero } from "@/components/secoes/Hero";
 import { Servicos } from "@/components/secoes/Servicos";
 import { Topo } from "@/components/secoes/Topo";
+import { Unhas } from "@/components/secoes/Unhas";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <main>
         <Hero />
         <Servicos />
+        <Unhas />
       </main>
     </>
   );

@@ -16,7 +16,10 @@ export function Topo() {
         <nav aria-label="Seções publicadas" className="topo__nav" data-revelar style={{ "--i": 1 } as React.CSSProperties}>
           <a href="#hero">Estúdio</a>
           <a href="#servicos">Pele &amp; corpo</a>
+          <a href="#unhas">Unhas</a>
         </nav>
+
+        <AlternadorTema />
 
         <Botao
           aria-label="Abrir o WhatsApp para consultar a agenda"
@@ -30,7 +33,6 @@ export function Topo() {
           <IconeSeta />
         </Botao>
       </header>
-      <AlternadorTema />
     </section>
   );
 }

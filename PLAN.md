@@ -50,7 +50,7 @@ Grades, rótulos técnicos e superfícies limpas mostram que pele e unhas recebe
 4. [ ] **Arquitetura de arquivos e WhatsApp**
    - [x] Separar seções, UI, folhas clientes, conteúdo e utilitários conforme a árvore deste plano.
    - [x] Implementar `src/lib/wa.ts` com `encodeURIComponent` e um único número de origem.
-   - [ ] Gerar CTA individual em cada card com mensagem que cite exatamente o serviço selecionado (será concluído com os cards, após a aprovação das fundações).
+   - [x] Gerar CTA individual em cada serviço com mensagem que cite exatamente o procedimento selecionado.
 
 5. [x] **Direção visual “instrumento de precisão e matéria”**
    - [x] Traduzir a referência consultório suíço + fotografia japonesa de salão em superfícies foscas, muito ar e sinalização técnica.
@@ -101,6 +101,7 @@ Grades, rótulos técnicos e superfícies limpas mostram que pele e unhas recebe
     - [x] Publicar `topo` como seção sticky, com navegação âncora, alternador de tema e CTA de WhatsApp.
     - [x] Publicar `hero` com headline, subtítulo, dois CTAs, prova rápida, crops 4:5/16:9 e canvas decorativo.
     - [x] Publicar `servicos` como catálogo de Pele & Corpo, com duração, faixa de preço, itens inclusos e CTA individual.
+    - [x] Publicar `unhas` como dossiê autoral de matéria, com gel curado, fibra de vidro e índice técnico próprio.
     - [ ] Publicar, sem seção aninhada, os contratos `topo`, `hero`, `credenciais`, `servicos`, `unhas`, `protocolo`, `galeria`, `equipe`, `depoimentos`, `precos`, `faq`, `localizacao`, `contato` e `rodape`.
     - [ ] Aplicar a cada âncora `id` e `data-secao` idênticos em kebab-case.
     - [ ] Aplicar `scroll-margin-top: calc(var(--altura-cabecalho) + 16px)`.

@@ -36,6 +36,7 @@ try {
     });
     await pagina.waitForFunction(() => document.querySelector('[data-opcao="dia"]')?.getAttribute("aria-checked") === "true");
     await pagina.evaluate(async () => {
+      document.querySelectorAll("img").forEach((imagem) => { imagem.loading = "eager"; });
       await document.fonts.ready;
       await Promise.all(Array.from(document.images, (imagem) => imagem.decode().catch(() => undefined)));
     });
@@ -44,6 +45,8 @@ try {
       const caixa = (seletor) => document.querySelector(seletor)?.getBoundingClientRect();
       const alternador = caixa(".alternador-tema");
       const provas = caixa(".hero__provas");
+      const painelHero = caixa(".hero__visual");
+      const conteudoHero = caixa(".hero__conteudo");
       const cartoes = Array.from(document.querySelectorAll(".servicos__cartao"), (elemento) => elemento.getBoundingClientRect());
       const grade = document.querySelector(".servicos__grade");
       const servicos = caixa("#servicos");
@@ -56,9 +59,13 @@ try {
       const linhas = Object.values(Object.groupBy(cartoes, (cartao) => String(Math.round(cartao.top))));
       const botoes = Array.from(document.querySelectorAll(".servicos__cartao > a"), (elemento) => elemento.getBoundingClientRect());
       const imagemHero = document.querySelector(".hero__visual img");
+      const imagensUnhas = Array.from(document.querySelectorAll(".unhas__imagem img"), (elemento) => elemento.getBoundingClientRect());
 
       const intersectam = alternador && provas
         ? !(alternador.right <= provas.left || alternador.left >= provas.right || alternador.bottom <= provas.top || alternador.top >= provas.bottom)
+        : null;
+      const alternadorSobrePainel = alternador && painelHero
+        ? !(alternador.right <= painelHero.left || alternador.left >= painelHero.right || alternador.bottom <= painelHero.top || alternador.top >= painelHero.bottom)
         : null;
 
       return {
@@ -68,7 +75,12 @@ try {
           largura: Math.round(alternador.width),
           topo: Math.round(alternador.top),
         },
+        colisaoAlternadorPainel: alternadorSobrePainel,
         colisaoAlternadorProvas: intersectam,
+        documento: {
+          clientWidth: document.documentElement.clientWidth,
+          scrollWidth: document.documentElement.scrollWidth,
+        },
         grade: grade && getComputedStyle(grade).gridTemplateColumns,
         linhasCards: linhas.map((linha) => {
           const indices = linha.map((cartao) => cartoes.indexOf(cartao));
@@ -79,6 +91,8 @@ try {
           };
         }),
         hero: {
+          alturaConteudo: Math.round(conteudoHero.height),
+          alturaPainel: Math.round(painelHero.height),
           imagem: imagemHero?.getAttribute("src"),
           larguraTexto: Math.round(textoHero.getBoundingClientRect().width),
           linhasTexto: faixaTextoHero.getClientRects().length,
@@ -94,12 +108,33 @@ try {
           largura: Math.round(cartoes.at(-1).width),
           esquerda: Math.round(cartoes.at(-1).left),
         },
+        unhas: {
+          imagens: imagensUnhas.map((imagem) => ({ altura: Math.round(imagem.height), largura: Math.round(imagem.width) })),
+          servicos: document.querySelectorAll(".unhas__servico").length,
+        },
       };
     });
+
+    if (medidas.documento.scrollWidth > quadro.largura + 1) {
+      throw new Error(`Overflow em ${quadro.nome}: ${medidas.documento.scrollWidth}px para ${quadro.largura}px`);
+    }
+    if (medidas.unhas.servicos !== 4 || medidas.unhas.imagens.some((imagem) => imagem.altura === 0 || imagem.largura === 0)) {
+      throw new Error(`Seção unhas incompleta em ${quadro.nome}`);
+    }
+    if (quadro.nome === "540" && medidas.grade.split(" ").length !== 2) {
+      throw new Error(`Grade de serviços não tem duas colunas em ${quadro.nome}`);
+    }
+    if (quadro.nome === "1440" && Math.abs(medidas.hero.alturaConteudo - medidas.hero.alturaPainel) > 1) {
+      throw new Error(`Painel e conteúdo do hero diferem em ${quadro.nome}`);
+    }
 
     if (quadro.nome === "390") {
       await pagina.screenshot({ animations: "disabled", path: path.join(destino, "dia-390-viewport.png") });
     } else {
+      await pagina.screenshot({
+        animations: "disabled",
+        path: path.join(destino, `dia-${quadro.nome}-viewport.png`),
+      });
       await pagina.locator("#hero").screenshot({
         animations: "disabled",
         path: path.join(destino, `dia-${quadro.nome}-hero.png`),
@@ -108,6 +143,10 @@ try {
       await pagina.locator("#servicos").screenshot({
         animations: "disabled",
         path: path.join(destino, `dia-${quadro.nome}-servicos.png`),
+      });
+      await pagina.locator("#unhas").screenshot({
+        animations: "disabled",
+        path: path.join(destino, `dia-${quadro.nome}-unhas.png`),
       });
     }
 
