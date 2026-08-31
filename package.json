@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "capture:foundation": "node scripts/capturar-fundacao.mjs",
+    "capture:marco": "node scripts/capturar-marco.mjs",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
