@@ -39,13 +39,13 @@ Grades, rótulos técnicos e superfícies limpas mostram que pele e unhas recebe
    - [x] Não instalar Framer Motion, GSAP, Lottie ou bibliotecas equivalentes.
    - [x] Fazer `tsc --noEmit` e ESLint passarem sem erros.
 
-3. [ ] **Identidade e conteúdo fictício**
-   - [ ] Aplicar a marca “ESTÚDIO NOVE — Estética & Nail Design”, em Maringá/PR.
-   - [ ] Centralizar telefone/WhatsApp brasileiro fictício, endereço, horários e redes em `src/content/contato.ts`, sem hardcode nos componentes.
-   - [ ] Escrever conteúdo verossímil em pt-BR, curto e específico, com protocolos, duração, preço, contraindicações leves e pós-procedimento.
-   - [ ] Cobrir Pele & Corpo: limpeza profunda, sobrancelha com henna, cera quente, massagem relaxante e drenagem.
-   - [ ] Cobrir Unhas: fibra de vidro, esmaltação em gel, blindagem e nail art autoral.
-   - [ ] Excluir “transforme sua beleza”, “realce sua essência”, “cuidar de você é nossa missão” e variações.
+3. [x] **Identidade e conteúdo fictício**
+   - [x] Aplicar a marca “ESTÚDIO NOVE — Estética & Nail Design”, em Maringá/PR.
+   - [x] Centralizar telefone/WhatsApp brasileiro fictício, endereço, horários e redes em `src/content/contato.ts`, sem hardcode nos componentes.
+   - [x] Escrever conteúdo verossímil em pt-BR, curto e específico, com protocolos, duração, preço, contraindicações leves e pós-procedimento.
+   - [x] Cobrir Pele & Corpo: limpeza profunda, sobrancelha com henna, cera quente, massagem relaxante e drenagem.
+   - [x] Cobrir Unhas: fibra de vidro, esmaltação em gel, blindagem e nail art autoral.
+   - [x] Excluir “transforme sua beleza”, “realce sua essência”, “cuidar de você é nossa missão” e variações.
 
 4. [ ] **Arquitetura de arquivos e WhatsApp**
    - [ ] Separar seções, UI, folhas clientes, conteúdo e utilitários conforme a árvore deste plano.
