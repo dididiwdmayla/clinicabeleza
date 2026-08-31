@@ -151,6 +151,7 @@ a {
   font-family: var(--fonte-display);
   font-size: var(--txt-7);
   font-stretch: 88%;
+  font-variation-settings: "wdth" 88;
   font-weight: 620;
   letter-spacing: -0.035em;
   line-height: 0.98;
@@ -164,6 +165,11 @@ a {
   font-size: var(--txt-1);
   line-height: 1.6;
   text-wrap: pretty;
+}
+
+.fundacao__intro p,
+.fundacao__intro nav {
+  max-width: 62ch;
 }
 
 .fundacao__acoes {

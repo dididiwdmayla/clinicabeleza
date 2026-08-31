@@ -59,12 +59,12 @@ Grades, rótulos técnicos e superfícies limpas mostram que pele e unhas recebe
    - [x] Usar rótulos técnicos monoespaçados, em caixa-alta e com `letter-spacing: 0.08em`.
    - [x] Não usar rosa-claro, serifas Playfair/Cormorant, dourado, mármore, folhagem, lótus ou gradiente rosa-lilás.
 
-6. [ ] **Tipografia e escala fluida**
-   - [ ] Usar Bricolage Grotesque apenas em headline e títulos de seção, com tracking negativo, `line-height` entre `0.95` e `1.05` e `text-wrap: balance`.
-   - [ ] Usar Instrument Sans em texto e navegação, `line-height` entre `1.55` e `1.65`, `max-width: 62ch` e `text-wrap: pretty`.
-   - [ ] Usar IBM Plex Mono em rótulos, preços, durações, etapas e horários, sempre pequena e em caixa-alta.
-   - [ ] Definir tokens `--txt--1` a `--txt-7` com `clamp()`, razão 1.2 mobile/1.333 desktop e corpo de 16px.
-   - [ ] Proibir `font-size` em px cru nos componentes e aplicar números tabulares aos preços.
+6. [x] **Tipografia e escala fluida**
+   - [x] Usar Bricolage Grotesque apenas em headline e títulos de seção, com tracking negativo, `line-height` entre `0.95` e `1.05` e `text-wrap: balance`.
+   - [x] Usar Instrument Sans em texto e navegação, `line-height` entre `1.55` e `1.65`, `max-width: 62ch` e `text-wrap: pretty`.
+   - [x] Usar IBM Plex Mono em rótulos, preços, durações, etapas e horários, sempre pequena e em caixa-alta.
+   - [x] Definir tokens `--txt--1` a `--txt-7` com `clamp()`, razão 1.2 mobile/1.333 desktop e corpo de 16px.
+   - [x] Proibir `font-size` em px cru nos componentes e aplicar números tabulares aos preços.
 
 7. [ ] **Fontes locais**
    - [ ] Copiar os três arquivos validados de `/tmp/item0-fonts/` para `public/fontes/` e incluí-los no commit.

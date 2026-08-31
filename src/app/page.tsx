@@ -17,7 +17,7 @@ export default function Home() {
       <div className="fundacao__grade">
         <div className="fundacao__intro">
           <Rotulo>Pele + unhas / higiene + acabamento</Rotulo>
-          <h1 className="fundacao__titulo">Precisão para a pele. Cor e forma nas unhas.</h1>
+          <h1 className="fundacao__titulo">Precisão na pele. Proporções e sequência nas unhas.</h1>
           <p className="fundacao__texto">
             Protocolos com tempo, preço e cuidado pós-atendimento definidos antes de começar.
             Técnica limpa para pele e corpo; desenho sob medida para as unhas.

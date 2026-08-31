@@ -24,7 +24,7 @@ type BotaoAcao = BaseBotao &
 export type BotaoProps = BotaoLink | BotaoAcao;
 
 const estilosBase =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-1 border px-4 py-3 font-texto text-sm font-semibold transition-[transform,color,background-color,border-color] duration-rapida ease-saida focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-foco active:scale-[0.98]";
+  "inline-flex min-h-11 items-center justify-center gap-2 rounded-1 border px-4 py-3 font-texto text-0 font-semibold transition-[transform,color,background-color,border-color] duration-rapida ease-saida focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-foco active:scale-[0.98]";
 
 export function Botao(props: BotaoProps) {
   const { className, variante = "acento" } = props;
