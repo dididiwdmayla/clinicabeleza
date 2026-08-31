@@ -9,12 +9,15 @@ export const metadata: Metadata = {
 };
 
 const scriptTema = `(() => {
+  const raiz = document.documentElement;
+  raiz.classList.add('js');
+  if (new URLSearchParams(location.search).get('shot') === '1') raiz.classList.add('shot');
   const temas = ['noite', 'dia', 'oxido', 'mineral'];
   const salvo = localStorage.getItem('estudio-nove-tema');
   const preferido = matchMedia('(prefers-color-scheme: dark)').matches ? 'noite' : 'dia';
   const tema = salvo && temas.includes(salvo) ? salvo : preferido;
-  document.documentElement.dataset.theme = tema;
-  document.documentElement.style.colorScheme = tema === 'dia' ? 'light' : 'dark';
+  raiz.dataset.theme = tema;
+  raiz.style.colorScheme = tema === 'dia' ? 'light' : 'dark';
 })();`;
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

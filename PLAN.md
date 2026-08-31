@@ -98,6 +98,7 @@ Grades, rótulos técnicos e superfícies limpas mostram que pele e unhas recebe
     - [ ] Aplicar temperatura consistente, overlay sólido de baixa opacidade e `--raio-2`, sem duotone via blend nem filtro em imagem móvel.
 
 11. [ ] **Seções e identificadores estáveis**
+    - [x] Publicar `topo` como seção sticky, com navegação âncora, alternador de tema e CTA de WhatsApp.
     - [ ] Publicar, sem seção aninhada, os contratos `topo`, `hero`, `credenciais`, `servicos`, `unhas`, `protocolo`, `galeria`, `equipe`, `depoimentos`, `precos`, `faq`, `localizacao`, `contato` e `rodape`.
     - [ ] Aplicar a cada âncora `id` e `data-secao` idênticos em kebab-case.
     - [ ] Aplicar `scroll-margin-top: calc(var(--altura-cabecalho) + 16px)`.

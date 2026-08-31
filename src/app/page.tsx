@@ -1,4 +1,5 @@
-import { AlternadorTema } from "@/components/clientes/AlternadorTema";
+import { Revelacao } from "@/components/clientes/Revelacao";
+import { Topo } from "@/components/secoes/Topo";
 import { Botao } from "@/components/ui/Botao";
 import { Cartao } from "@/components/ui/Cartao";
 import { Divisor } from "@/components/ui/Divisor";
@@ -9,12 +10,11 @@ import { criarLinkTelefone, criarLinkWhatsApp } from "@/lib/wa";
 
 export default function Home() {
   return (
-    <main className="fundacao">
-      <AlternadorTema />
-      <div className="fundacao__cabecalho">
-        <Rotulo>{contato.marca} / Fundação 01—08</Rotulo>
-        <span className="fundacao__local">{contato.cidade} · atendimento com hora marcada</span>
-      </div>
+    <>
+      <a className="pular-conteudo" href="#hero">Pular para o conteúdo</a>
+      <Revelacao />
+      <Topo />
+      <main className="fundacao">
 
       <div className="fundacao__grade">
         <div className="fundacao__intro">
@@ -61,8 +61,8 @@ export default function Home() {
         </Cartao>
       </div>
 
-      <Divisor />
-      <div className="fundacao__dados">
+        <Divisor />
+        <div className="fundacao__dados">
         <div className="fundacao__dado">
           <Rotulo>Tipografia</Rotulo>
           <strong>3 famílias / papéis fixos</strong>
@@ -75,7 +75,8 @@ export default function Home() {
           <Rotulo>Temas</Rotulo>
           <strong>4 sistemas cromáticos</strong>
         </div>
-      </div>
-    </main>
+        </div>
+      </main>
+    </>
   );
 }
