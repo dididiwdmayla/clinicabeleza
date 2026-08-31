@@ -1,3 +1,4 @@
+import { AlternadorTema } from "@/components/clientes/AlternadorTema";
 import { Botao } from "@/components/ui/Botao";
 import { Cartao } from "@/components/ui/Cartao";
 import { Divisor } from "@/components/ui/Divisor";
@@ -9,6 +10,7 @@ import { criarLinkTelefone, criarLinkWhatsApp } from "@/lib/wa";
 export default function Home() {
   return (
     <main className="fundacao">
+      <AlternadorTema />
       <div className="fundacao__cabecalho">
         <Rotulo>{contato.marca} / Fundação 01—08</Rotulo>
         <span className="fundacao__local">{contato.cidade} · atendimento com hora marcada</span>

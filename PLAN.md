@@ -72,15 +72,15 @@ Grades, rótulos técnicos e superfícies limpas mostram que pele e unhas recebe
    - [x] Usar `preload: true` somente em Bricolage e Instrument Sans; `preload: false` em IBM Plex Mono.
    - [x] Confirmar no build que não existe referência a Google Fonts ou CDN.
 
-8. [ ] **Quatro temas no mesmo código**
-   - [ ] Implementar `data-theme="noite | dia | oxido | mineral"` na raiz.
-   - [ ] Definir todos os tokens semânticos de cor em `globals.css`: `--bg`, `--bg-elev`, `--superficie`, `--linha`, `--tinta`, `--tinta-2`, `--tinta-3`, `--acento`, `--acento-tinta`, `--acento-suave` e `--foco`.
-   - [ ] Definir também `--raio-1/2/3`, `--sombra-1/2`, `--dur-rapida/media/lenta`, `--ease-saida` e `--ease-entrada`.
-   - [ ] Mapear Tailwind aos tokens e impedir qualquer literal de cor em componentes.
-   - [ ] Fazer `oxido` e `mineral` parecerem marcas irmãs cromaticamente opostas, não simples skins.
-   - [ ] Criar radiogroup acessível fixo, com rótulo, `aria-checked` e alvos de pelo menos 44px.
-   - [ ] Persistir em `localStorage`, respeitar `prefers-color-scheme` na primeira visita e aplicar tema antes da primeira pintura.
-   - [ ] Evitar CLS e limitar transições de cor a 200ms.
+8. [x] **Quatro temas no mesmo código**
+   - [x] Implementar `data-theme="noite | dia | oxido | mineral"` na raiz.
+   - [x] Definir todos os tokens semânticos de cor em `globals.css`: `--bg`, `--bg-elev`, `--superficie`, `--linha`, `--tinta`, `--tinta-2`, `--tinta-3`, `--acento`, `--acento-tinta`, `--acento-suave` e `--foco`.
+   - [x] Definir também `--raio-1/2/3`, `--sombra-1/2`, `--dur-rapida/media/lenta`, `--ease-saida` e `--ease-entrada`.
+   - [x] Mapear Tailwind aos tokens e impedir qualquer literal de cor em componentes.
+   - [x] Fazer `oxido` e `mineral` parecerem marcas irmãs cromaticamente opostas, não simples skins.
+   - [x] Criar radiogroup acessível fixo, com rótulo, `aria-checked` e alvos de pelo menos 44px.
+   - [x] Persistir em `localStorage`, respeitar `prefers-color-scheme` na primeira visita e aplicar tema antes da primeira pintura.
+   - [x] Evitar CLS e limitar transições de cor a 200ms.
 
 9. [ ] **Espaçamento, grid e contêiner**
    - [ ] Criar escala de 4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 160 e 224px como tokens.
