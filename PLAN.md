@@ -29,15 +29,15 @@ Grades, rótulos técnicos e superfícies limpas mostram que pele e unhas recebe
    - [x] Adotar commits incrementais por item, com `git add -A`, verificação correspondente e mensagens `feat(secao): ...`, `chore(build): ...` ou `perf(hero): ...`.
    - [x] Configurar `origin` para `https://github.com/dididiwdmayla/clinicabeleza`; tentar push em cada marco e, se faltar credencial, continuar com commits locais e relatar imediatamente.
 
-2. [ ] **Stack e restrições estruturais**
-   - [ ] Criar Next.js com App Router, TypeScript `strict` e Tailwind CSS.
-   - [ ] Manter uma única página pública em `/`, pronta para publicação na Vercel.
-   - [ ] Não criar banco, autenticação, rota de API, Server Action nem formulário com envio ao servidor.
-   - [ ] Manter todo conteúdo estático e tipado em `src/content/`.
-   - [ ] Limitar contatos a links `wa.me` com mensagem pré-preenchida e `tel:`.
-   - [ ] Usar Server Components por padrão e isolar `"use client"` somente no tema, revelação e canvas.
-   - [ ] Não instalar Framer Motion, GSAP, Lottie ou bibliotecas equivalentes.
-   - [ ] Fazer `tsc --noEmit` e ESLint passarem sem erros.
+2. [x] **Stack e restrições estruturais**
+   - [x] Criar Next.js com App Router, TypeScript `strict` e Tailwind CSS.
+   - [x] Manter uma única página pública em `/`, pronta para publicação na Vercel.
+   - [x] Não criar banco, autenticação, rota de API, Server Action nem formulário com envio ao servidor.
+   - [x] Manter todo conteúdo estático e tipado em `src/content/`.
+   - [x] Limitar contatos a links `wa.me` com mensagem pré-preenchida e `tel:`.
+   - [x] Usar Server Components por padrão e isolar `"use client"` somente no tema, revelação e canvas.
+   - [x] Não instalar Framer Motion, GSAP, Lottie ou bibliotecas equivalentes.
+   - [x] Fazer `tsc --noEmit` e ESLint passarem sem erros.
 
 3. [ ] **Identidade e conteúdo fictício**
    - [ ] Aplicar a marca “ESTÚDIO NOVE — Estética & Nail Design”, em Maringá/PR.
