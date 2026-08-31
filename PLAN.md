@@ -18,7 +18,7 @@
 
 ## Justificativa da direção visual
 
-A linguagem de instrumento de precisão une a confiança clínica dos procedimentos de pele à materialidade controlada do nail design, comunicando método e acabamento sem recorrer ao luxo genérico dos clichês de estética.
+Grades, rótulos técnicos e superfícies limpas mostram que pele e unhas recebem higiene, medida e acabamento verificáveis — algo que rosa, dourado e mármore trocam por uma promessa vaga de luxo.
 
 ## Checklist de execução
 
@@ -93,6 +93,7 @@ A linguagem de instrumento de precisão une a confiança clínica dos procedimen
     - [ ] Garantir dimensões reais ou wrapper `fill` com `aspect-ratio`, posição relativa e altura resolvida.
     - [ ] Informar `sizes` em toda imagem responsiva, `priority` somente no hero e lazy loading nas demais.
     - [ ] Gerar placeholders nas proporções finais por `scripts/gerar-placeholders.mjs` usando Sharp, cor sólida e grão estático.
+    - [ ] Usar `hero-retrato.webp` (4:5) e `hero-paisagem.webp` (16:9) em `<picture>`/`sizes` responsivos, escolhendo a fonte por breakpoint para preservar o corte, especialmente em 540px.
     - [ ] Escrever `IMAGENS.md` com caminho, proporção, dimensão mínima e briefing fotográfico de cada slot.
     - [ ] Aplicar temperatura consistente, overlay sólido de baixa opacidade e `--raio-2`, sem duotone via blend nem filtro em imagem móvel.
 
@@ -142,6 +143,7 @@ A linguagem de instrumento de precisão une a confiança clínica dos procedimen
     - [ ] Usar CDP com CPU throttle 4× e reportar FPS médio e p5 durante a rolagem completa.
     - [ ] Salvar evidências em `verificacao/` e números/afirmações em `verificacao/relatorio.md`.
     - [ ] Abrir e inspecionar visualmente mobile, desktop, os quatro temas e 540px; registrar alinhamento, overflow, órfãos, distorção, contraste e hierarquia, corrigindo e repetindo quando necessário.
+    - [ ] Conferir na captura do hero se `ã`, `õ` e `ê` colidem com a linha superior no `line-height` baixo da Bricolage; ajustar o `line-height` ou o headline se houver colisão.
 
 17. [ ] **Acessibilidade**
     - [ ] Usar `header`, `nav`, `main`, seções com `aria-labelledby` e `footer`.
@@ -179,7 +181,8 @@ A linguagem de instrumento de precisão une a confiança clínica dos procedimen
 │   │   └── InstrumentSans-Variable.woff2
 │   └── img
 │       ├── grao.png
-│       ├── hero.webp
+│       ├── hero-paisagem.webp
+│       ├── hero-retrato.webp
 │       ├── unhas-destaque.webp
 │       ├── equipe
 │       │   ├── profissional-01.webp
