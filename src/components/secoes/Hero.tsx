@@ -47,6 +47,7 @@ export function Hero() {
               priority
               sizes="(min-width: 48rem) 42vw, calc(100vw - 2 * var(--gutter))"
               src="/img/hero-retrato.webp"
+              unoptimized
             />
           </picture>
           <CanvasHero />

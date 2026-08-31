@@ -115,9 +115,9 @@ Grades, rótulos técnicos e superfícies limpas mostram que pele e unhas recebe
     - [x] Manter toda informação disponível sem hover e habilitar rolagem suave somente quando movimento for permitido.
     - [x] Criar o único efeito contínuo no canvas 2D do hero, com DPR ≤ 1.5, aproximadamente 30fps, pausa fora da viewport/aba e cleanup no unmount.
 
-13. [ ] **Movimento reduzido e modo de captura**
-    - [ ] Sob `prefers-reduced-motion`, revelar tudo, remover transformações, reduzir transições a ≤ 80ms, desligar smooth scroll e desenhar um frame do canvas.
-    - [ ] Fazer `?shot=1` aplicar exatamente o comportamento reduzido, sem animação pendente para o robô fotógrafo.
+13. [x] **Movimento reduzido e modo de captura**
+    - [x] Sob `prefers-reduced-motion`, revelar tudo, remover transformações, reduzir transições a ≤ 80ms, desligar smooth scroll e desenhar um frame do canvas.
+    - [x] Fazer `?shot=1` aplicar exatamente o comportamento reduzido, sem animação pendente para o robô fotógrafo.
 
 14. [ ] **Restrições fechadas de performance**
     - [ ] Não combinar `filter: blur()` com transform animado.

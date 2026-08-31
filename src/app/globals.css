@@ -394,6 +394,10 @@ a {
   inset: 0;
 }
 
+.hero__visual picture {
+  opacity: 0.28;
+}
+
 .hero__visual img {
   object-fit: cover;
 }

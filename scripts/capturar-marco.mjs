@@ -55,7 +55,7 @@ try {
       });
 
       const medidas = await pagina.evaluate(() => {
-        const cartoes = Array.from(document.querySelectorAll<HTMLElement>(".servicos__cartao"));
+        const cartoes = Array.from(document.querySelectorAll(".servicos__cartao"));
         return {
           cards: cartoes.map((cartao) => {
             const caixa = cartao.getBoundingClientRect();
