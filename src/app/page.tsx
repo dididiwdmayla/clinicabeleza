@@ -1,5 +1,6 @@
 import { Revelacao } from "@/components/clientes/Revelacao";
 import { Hero } from "@/components/secoes/Hero";
+import { Servicos } from "@/components/secoes/Servicos";
 import { Topo } from "@/components/secoes/Topo";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
       <Topo />
       <main>
         <Hero />
+        <Servicos />
       </main>
     </>
   );

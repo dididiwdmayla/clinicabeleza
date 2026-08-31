@@ -100,19 +100,20 @@ Grades, rótulos técnicos e superfícies limpas mostram que pele e unhas recebe
 11. [ ] **Seções e identificadores estáveis**
     - [x] Publicar `topo` como seção sticky, com navegação âncora, alternador de tema e CTA de WhatsApp.
     - [x] Publicar `hero` com headline, subtítulo, dois CTAs, prova rápida, crops 4:5/16:9 e canvas decorativo.
+    - [x] Publicar `servicos` como catálogo de Pele & Corpo, com duração, faixa de preço, itens inclusos e CTA individual.
     - [ ] Publicar, sem seção aninhada, os contratos `topo`, `hero`, `credenciais`, `servicos`, `unhas`, `protocolo`, `galeria`, `equipe`, `depoimentos`, `precos`, `faq`, `localizacao`, `contato` e `rodape`.
     - [ ] Aplicar a cada âncora `id` e `data-secao` idênticos em kebab-case.
     - [ ] Aplicar `scroll-margin-top: calc(var(--altura-cabecalho) + 16px)`.
     - [ ] Não colocar seções em contêiner que corte a captura com `overflow: hidden`.
     - [ ] Entregar hero completo, faixa de credenciais, catálogo Pele & Corpo, destaque autoral de Unhas, protocolo em quatro etapas, galeria, equipe, 4–6 depoimentos, tabela, FAQ com 6–8 itens, localização sem iframe, contato e rodapé.
 
-12. [ ] **Interatividade e movimento**
-    - [ ] Implementar um único `IntersectionObserver` em `src/lib/reveal.ts`, com `threshold: 0.15`, `rootMargin: "0px 0px -8% 0px"`, `data-revelar`, `--i` e `unobserve` imediato.
-    - [ ] Esconder estado inicial apenas sob classe `js`; sem JavaScript, todo conteúdo permanece visível.
-    - [ ] Animar somente `opacity` e `translateY` de até 16px por 320–420ms com `cubic-bezier(.16,1,.3,1)`.
-    - [ ] Aplicar foco visível de 2px + offset de 3px, hover somente em mídia compatível, active tátil e alvos ≥ 44×44px.
-    - [ ] Manter toda informação disponível sem hover e habilitar rolagem suave somente quando movimento for permitido.
-    - [ ] Criar o único efeito contínuo no canvas 2D do hero, com DPR ≤ 1.5, aproximadamente 30fps, pausa fora da viewport/aba e cleanup no unmount.
+12. [x] **Interatividade e movimento**
+    - [x] Implementar um único `IntersectionObserver` em `src/lib/reveal.ts`, com `threshold: 0.15`, `rootMargin: "0px 0px -8% 0px"`, `data-revelar`, `--i` e `unobserve` imediato.
+    - [x] Esconder estado inicial apenas sob classe `js`; sem JavaScript, todo conteúdo permanece visível.
+    - [x] Animar somente `opacity` e `translateY` de até 16px por 320–420ms com `cubic-bezier(.16,1,.3,1)`.
+    - [x] Aplicar foco visível de 2px + offset de 3px, hover somente em mídia compatível, active tátil e alvos ≥ 44×44px.
+    - [x] Manter toda informação disponível sem hover e habilitar rolagem suave somente quando movimento for permitido.
+    - [x] Criar o único efeito contínuo no canvas 2D do hero, com DPR ≤ 1.5, aproximadamente 30fps, pausa fora da viewport/aba e cleanup no unmount.
 
 13. [ ] **Movimento reduzido e modo de captura**
     - [ ] Sob `prefers-reduced-motion`, revelar tudo, remover transformações, reduzir transições a ≤ 80ms, desligar smooth scroll e desenhar um frame do canvas.
