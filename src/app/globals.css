@@ -275,12 +275,19 @@ a {
 }
 
 .fundacao__placa > div {
+  position: relative;
   display: flex;
   min-width: 0;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: var(--esp-4);
   padding: var(--esp-4);
   border-right: 0.0625rem solid var(--linha);
   border-bottom: 0.0625rem solid var(--linha);
+}
+
+.fundacao__placa-rotulo {
   color: var(--tinta-3);
   font-family: var(--fonte-tecnica, "Courier New", monospace);
   font-size: var(--txt--1);
@@ -297,13 +304,56 @@ a {
 }
 
 .fundacao__placa .fundacao__acento {
-  align-items: center;
-  justify-content: center;
   background: var(--acento);
   color: var(--acento-tinta);
 }
 
+.fundacao__acento .fundacao__placa-rotulo {
+  color: color-mix(in srgb, var(--acento-tinta) 70%, transparent);
+}
+
+.fundacao__fosco-amostra {
+  height: 58%;
+  min-height: 2.75rem;
+  border: 0.0625rem solid color-mix(in srgb, var(--tinta-3) 45%, transparent);
+  background-color: color-mix(in srgb, var(--superficie) 74%, var(--bg));
+  background-image: radial-gradient(circle, color-mix(in srgb, var(--tinta) 18%, transparent) 0.04rem, transparent 0.05rem);
+  background-size: 0.25rem 0.25rem;
+}
+
+.fundacao__linha-amostra {
+  position: relative;
+  height: 58%;
+  min-height: 2.75rem;
+  border-block: 0.0625rem solid var(--linha);
+  background: repeating-linear-gradient(to bottom, transparent 0 0.55rem, color-mix(in srgb, var(--tinta-2) 48%, transparent) 0.55rem 0.6rem);
+}
+
+.fundacao__linha-amostra::after {
+  position: absolute;
+  width: 34%;
+  border-top: 0.1875rem solid var(--acento);
+  content: "";
+  inset: 50% auto auto 0;
+}
+
+.fundacao__medida-amostra {
+  display: flex;
+  height: 58%;
+  min-height: 2.75rem;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: var(--esp-2);
+  border-block: 0.0625rem solid var(--linha);
+  background: repeating-linear-gradient(to right, var(--linha) 0 0.0625rem, transparent 0.0625rem 0.75rem);
+  color: var(--tinta-2);
+  font-family: var(--fonte-tecnica, "Courier New", monospace);
+  font-size: var(--txt--1);
+  font-variant-numeric: tabular-nums;
+}
+
 .fundacao__amostra {
+  align-self: center;
   width: clamp(3rem, 9vw, 5.5rem);
   aspect-ratio: 1;
   border: 0.0625rem solid color-mix(in srgb, var(--acento-tinta) 24%, transparent);

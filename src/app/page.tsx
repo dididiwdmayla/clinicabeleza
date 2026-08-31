@@ -41,10 +41,22 @@ export default function Home() {
           </div>
           <Divisor />
           <div className="fundacao__placa" aria-label="Amostra dos materiais visuais">
-            <div>Fosco</div>
-            <div>Linha 01</div>
-            <div>Medida</div>
-            <div className="fundacao__acento"><span className="fundacao__amostra" /></div>
+            <div className="fundacao__celula fundacao__fosco">
+              <span className="fundacao__placa-rotulo">Fosco</span>
+              <span aria-hidden="true" className="fundacao__fosco-amostra" />
+            </div>
+            <div className="fundacao__celula fundacao__linha">
+              <span className="fundacao__placa-rotulo">Linha 01</span>
+              <span aria-hidden="true" className="fundacao__linha-amostra" />
+            </div>
+            <div className="fundacao__celula fundacao__medida">
+              <span className="fundacao__placa-rotulo">Medida</span>
+              <span aria-hidden="true" className="fundacao__medida-amostra">24 / 32</span>
+            </div>
+            <div className="fundacao__celula fundacao__acento">
+              <span className="fundacao__placa-rotulo">Acento</span>
+              <span aria-hidden="true" className="fundacao__amostra" />
+            </div>
           </div>
         </Cartao>
       </div>
