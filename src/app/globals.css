@@ -362,6 +362,21 @@ a {
   box-shadow: inset 0.625rem 0.625rem 1.5rem color-mix(in srgb, var(--tinta) 25%, transparent);
 }
 
+[data-theme="dia"] .fundacao__acento {
+  background: var(--acento-suave);
+}
+
+[data-theme="dia"] .fundacao__acento .fundacao__placa-rotulo {
+  color: var(--tinta-3);
+}
+
+[data-theme="dia"] .fundacao__acento .fundacao__amostra {
+  width: clamp(2.5rem, 5vw, 3.75rem);
+  border-color: color-mix(in srgb, var(--acento) 42%, transparent);
+  background: color-mix(in srgb, var(--acento) 52%, var(--bg-elev));
+  box-shadow: inset 0.5rem 0.5rem 1rem color-mix(in srgb, var(--tinta) 14%, transparent);
+}
+
 .fundacao__dados {
   display: grid;
   gap: var(--esp-5);
