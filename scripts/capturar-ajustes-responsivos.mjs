@@ -60,6 +60,12 @@ try {
       const botoes = Array.from(document.querySelectorAll(".servicos__cartao > a"), (elemento) => elemento.getBoundingClientRect());
       const imagemHero = document.querySelector(".hero__visual img");
       const imagensUnhas = Array.from(document.querySelectorAll(".unhas__imagem img"), (elemento) => elemento.getBoundingClientRect());
+      const contratosSecao = ["credenciais", "protocolo", "galeria"].map((id) => {
+        const secao = document.getElementById(id);
+        return Boolean(secao && secao.dataset.secao === id);
+      });
+      const imagemProtocolo = caixa(".protocolo__visual img");
+      const imagensGaleria = Array.from(document.querySelectorAll(".galeria__imagem img"), (elemento) => elemento.getBoundingClientRect());
 
       const intersectam = alternador && provas
         ? !(alternador.right <= provas.left || alternador.left >= provas.right || alternador.bottom <= provas.top || alternador.top >= provas.bottom)
@@ -112,6 +118,23 @@ try {
           imagens: imagensUnhas.map((imagem) => ({ altura: Math.round(imagem.height), largura: Math.round(imagem.width) })),
           servicos: document.querySelectorAll(".unhas__servico").length,
         },
+        novasSecoes: {
+          contratos: contratosSecao,
+          credenciais: {
+            itens: document.querySelectorAll("#credenciais li").length,
+            revelar: document.querySelectorAll("#credenciais [data-revelar]").length,
+          },
+          galeria: {
+            imagens: imagensGaleria.map((imagem) => ({ altura: Math.round(imagem.height), largura: Math.round(imagem.width) })),
+            itens: document.querySelectorAll(".galeria__item").length,
+            revelar: document.querySelectorAll("#galeria [data-revelar]").length,
+          },
+          protocolo: {
+            etapas: document.querySelectorAll(".protocolo__etapas li").length,
+            imagem: imagemProtocolo && { altura: Math.round(imagemProtocolo.height), largura: Math.round(imagemProtocolo.width) },
+            revelar: document.querySelectorAll("#protocolo [data-revelar]").length,
+          },
+        },
       };
     });
 
@@ -120,6 +143,21 @@ try {
     }
     if (medidas.unhas.servicos !== 4 || medidas.unhas.imagens.some((imagem) => imagem.altura === 0 || imagem.largura === 0)) {
       throw new Error(`Seção unhas incompleta em ${quadro.nome}`);
+    }
+    if (
+      medidas.novasSecoes.credenciais.itens !== 4
+      || medidas.novasSecoes.credenciais.revelar !== 5
+      || medidas.novasSecoes.protocolo.etapas !== 4
+      || medidas.novasSecoes.protocolo.revelar !== 7
+      || !medidas.novasSecoes.protocolo.imagem
+      || medidas.novasSecoes.protocolo.imagem.altura === 0
+      || medidas.novasSecoes.protocolo.imagem.largura === 0
+      || medidas.novasSecoes.galeria.itens !== 6
+      || medidas.novasSecoes.galeria.revelar !== 8
+      || medidas.novasSecoes.galeria.imagens.some((imagem) => imagem.altura === 0 || imagem.largura === 0)
+      || medidas.novasSecoes.contratos.some((contrato) => !contrato)
+    ) {
+      throw new Error(`Credenciais, protocolo ou galeria incompletos em ${quadro.nome}`);
     }
     if (quadro.nome === "540" && medidas.grade.split(" ").length !== 2) {
       throw new Error(`Grade de serviços não tem duas colunas em ${quadro.nome}`);
@@ -147,6 +185,18 @@ try {
       await pagina.locator("#unhas").screenshot({
         animations: "disabled",
         path: path.join(destino, `dia-${quadro.nome}-unhas.png`),
+      });
+      await pagina.locator("#credenciais").screenshot({
+        animations: "disabled",
+        path: path.join(destino, `dia-${quadro.nome}-credenciais.png`),
+      });
+      await pagina.locator("#protocolo").screenshot({
+        animations: "disabled",
+        path: path.join(destino, `dia-${quadro.nome}-protocolo.png`),
+      });
+      await pagina.locator("#galeria").screenshot({
+        animations: "disabled",
+        path: path.join(destino, `dia-${quadro.nome}-galeria.png`),
       });
     }
 
