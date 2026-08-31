@@ -99,6 +99,7 @@ Grades, rótulos técnicos e superfícies limpas mostram que pele e unhas recebe
 
 11. [ ] **Seções e identificadores estáveis**
     - [x] Publicar `topo` como seção sticky, com navegação âncora, alternador de tema e CTA de WhatsApp.
+    - [x] Publicar `hero` com headline, subtítulo, dois CTAs, prova rápida, crops 4:5/16:9 e canvas decorativo.
     - [ ] Publicar, sem seção aninhada, os contratos `topo`, `hero`, `credenciais`, `servicos`, `unhas`, `protocolo`, `galeria`, `equipe`, `depoimentos`, `precos`, `faq`, `localizacao`, `contato` e `rodape`.
     - [ ] Aplicar a cada âncora `id` e `data-secao` idênticos em kebab-case.
     - [ ] Aplicar `scroll-margin-top: calc(var(--altura-cabecalho) + 16px)`.
