@@ -9,7 +9,8 @@
     "capture:marco": "node scripts/capturar-marco.mjs",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "verificar": "node scripts/verificar.mjs"
   },
   "dependencies": {
     "@sparticuz/chromium": "^149.0.0",

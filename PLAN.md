@@ -97,16 +97,15 @@ Grades, rótulos técnicos e superfícies limpas mostram que pele e unhas recebe
     - [ ] Escrever `IMAGENS.md` com caminho, proporção, dimensão mínima e briefing fotográfico de cada slot.
     - [ ] Aplicar temperatura consistente, overlay sólido de baixa opacidade e `--raio-2`, sem duotone via blend nem filtro em imagem móvel.
 
-11. [ ] **Seções e identificadores estáveis**
+11. [x] **Seções e identificadores estáveis**
     - [x] Publicar `topo` como seção sticky, com navegação âncora, alternador de tema e CTA de WhatsApp.
     - [x] Publicar `hero` com headline, subtítulo, dois CTAs, prova rápida, crops 4:5/16:9 e canvas decorativo.
     - [x] Publicar `servicos` como catálogo de Pele & Corpo, com duração, faixa de preço, itens inclusos e CTA individual.
-    - Progresso: `unhas`, `credenciais`, `protocolo` e `galeria` publicados com tratamentos próprios; o contrato completo permanece aberto até as 14 seções.
-    - [ ] Publicar, sem seção aninhada, os contratos `topo`, `hero`, `credenciais`, `servicos`, `unhas`, `protocolo`, `galeria`, `equipe`, `depoimentos`, `precos`, `faq`, `localizacao`, `contato` e `rodape`.
-    - [ ] Aplicar a cada âncora `id` e `data-secao` idênticos em kebab-case.
-    - [ ] Aplicar `scroll-margin-top: calc(var(--altura-cabecalho) + 16px)`.
-    - [ ] Não colocar seções em contêiner que corte a captura com `overflow: hidden`.
-    - [ ] Entregar hero completo, faixa de credenciais, catálogo Pele & Corpo, destaque autoral de Unhas, protocolo em quatro etapas, galeria, equipe, 4–6 depoimentos, tabela, FAQ com 6–8 itens, localização sem iframe, contato e rodapé.
+    - [x] Publicar, sem seção aninhada, os contratos `topo`, `hero`, `credenciais`, `servicos`, `unhas`, `protocolo`, `galeria`, `equipe`, `depoimentos`, `precos`, `faq`, `localizacao`, `contato` e `rodape`.
+    - [x] Aplicar a cada âncora `id` e `data-secao` idênticos em kebab-case.
+    - [x] Aplicar `scroll-margin-top: calc(var(--altura-cabecalho) + 16px)`.
+    - [x] Não colocar seções em contêiner que corte a captura com `overflow: hidden`.
+    - [x] Entregar hero completo, faixa de credenciais, catálogo Pele & Corpo, destaque autoral de Unhas, protocolo em quatro etapas, galeria, equipe, 4–6 depoimentos, tabela, FAQ com 6–8 itens, localização sem iframe, contato e rodapé.
 
 12. [x] **Interatividade e movimento**
     - [x] Implementar um único `IntersectionObserver` em `src/lib/reveal.ts`, com `threshold: 0.15`, `rootMargin: "0px 0px -8% 0px"`, `data-revelar`, `--i` e `unobserve` imediato.
@@ -120,48 +119,48 @@ Grades, rótulos técnicos e superfícies limpas mostram que pele e unhas recebe
     - [x] Sob `prefers-reduced-motion`, revelar tudo, remover transformações, reduzir transições a ≤ 80ms, desligar smooth scroll e desenhar um frame do canvas.
     - [x] Fazer `?shot=1` aplicar exatamente o comportamento reduzido, sem animação pendente para o robô fotógrafo.
 
-14. [ ] **Restrições fechadas de performance**
-    - [ ] Não combinar `filter: blur()` com transform animado.
-    - [ ] Fazer efeitos animados exclusivamente em canvas; manter os demais estáticos.
-    - [ ] Não usar SVG animado do tamanho da viewport, `mix-blend-mode` na raiz do fundo nem `backdrop-filter`.
-    - [ ] Limitar gradientes a faixas estruturais de até 96px e nunca colocá-los sob texto de leitura.
-    - [ ] Animar somente `transform` e `opacity`; nunca dimensões, posição, margem, sombra, background-position ou filtro.
-    - [ ] Limitar `will-change` transitório a no máximo dois elementos e `sticky` somente ao cabeçalho.
-    - [ ] Usar zero JavaScript de terceiros e zero fonte de ícones; SVGs inline terão dimensões explícitas.
+14. [x] **Restrições fechadas de performance**
+    - [x] Não combinar `filter: blur()` com transform animado.
+    - [x] Fazer efeitos animados exclusivamente em canvas; manter os demais estáticos.
+    - [x] Não usar SVG animado do tamanho da viewport, `mix-blend-mode` na raiz do fundo nem `backdrop-filter`.
+    - [x] Limitar gradientes a faixas estruturais de até 96px e nunca colocá-los sob texto de leitura.
+    - [x] Animar somente `transform` e `opacity`; nunca dimensões, posição, margem, sombra, background-position ou filtro.
+    - [x] Limitar `will-change` transitório a no máximo dois elementos e `sticky` somente ao cabeçalho.
+    - [x] Usar zero JavaScript de terceiros e zero fonte de ícones; SVGs inline terão dimensões explícitas.
 
-15. [ ] **Alvos mensuráveis**
-    - [ ] Atingir FPS médio mínimo de 45 na rolagem mobile com CPU 4× limitada.
-    - [ ] Medir CLS abaixo de 0.1 em mobile e desktop.
-    - [ ] Garantir zero slots de imagem com largura/altura zero.
-    - [ ] Garantir zero overflow horizontal e nenhuma quebra entre 320px e 1920px, com inspeção específica em 540px.
-    - [ ] Validar contraste AA nos quatro temas.
-    - [ ] Fazer build de produção, TypeScript e lint passarem sem warnings/erros.
+15. [x] **Alvos mensuráveis**
+    - [x] Atingir FPS médio mínimo de 45 na rolagem mobile com CPU 4× limitada.
+    - [x] Medir CLS abaixo de 0.1 em mobile e desktop.
+    - [x] Garantir zero slots de imagem com largura/altura zero.
+    - [x] Garantir zero overflow horizontal e nenhuma quebra entre 320px e 1920px, com inspeção específica em 540px.
+    - [x] Validar contraste AA nos quatro temas.
+    - [x] Fazer build de produção, TypeScript e lint passarem sem warnings/erros.
 
-16. [ ] **Verificação obrigatória com Playwright**
-    - [ ] Criar `scripts/verificar.mjs` usando exclusivamente `/tmp/chromium` e `--no-sandbox`, sem `playwright install`.
-    - [ ] Testar o build de produção local e gerar oito capturas full-page: 390×844 DPR 2 e 1440×900 nos quatro temas.
-    - [ ] Capturar cada um dos 14 IDs de seção em mobile e desktop.
-    - [ ] Capturar 320, 360, 390, 540, 768, 1024, 1280, 1440 e 1920px.
-    - [ ] Afirmar overflow ≤ 1px e dimensões não nulas para todos os `img`/wrappers em cada largura.
-    - [ ] Medir CLS durante rolagem roteirizada.
-    - [ ] Usar CDP com CPU throttle 4× e reportar FPS médio e p5 durante a rolagem completa.
-    - [ ] Salvar evidências em `verificacao/` e números/afirmações em `verificacao/relatorio.md`.
-    - [ ] Abrir e inspecionar visualmente mobile, desktop, os quatro temas e 540px; registrar alinhamento, overflow, órfãos, distorção, contraste e hierarquia, corrigindo e repetindo quando necessário.
-    - [ ] Conferir na captura do hero se `ã`, `õ` e `ê` colidem com a linha superior no `line-height` baixo da Bricolage; ajustar o `line-height` ou o headline se houver colisão.
+16. [x] **Verificação obrigatória com Playwright**
+    - [x] Criar `scripts/verificar.mjs` usando exclusivamente `/tmp/chromium` e `--no-sandbox`, sem `playwright install`.
+    - [x] Testar o build de produção local e gerar oito capturas full-page: 390×844 DPR 2 e 1440×900 nos quatro temas.
+    - [x] Capturar cada um dos 14 IDs de seção em mobile e desktop.
+    - [x] Capturar 320, 360, 390, 540, 768, 1024, 1280, 1440 e 1920px.
+    - [x] Afirmar overflow ≤ 1px e dimensões não nulas para todos os `img`/wrappers em cada largura.
+    - [x] Medir CLS durante rolagem roteirizada.
+    - [x] Usar CDP com CPU throttle 4× e reportar FPS médio e p5 durante a rolagem completa.
+    - [x] Salvar evidências em `verificacao/` e números/afirmações em `verificacao/relatorio.md`.
+    - [x] Abrir e inspecionar visualmente mobile, desktop, os quatro temas e 540px; registrar alinhamento, overflow, órfãos, distorção, contraste e hierarquia, corrigindo e repetindo quando necessário.
+    - [x] Conferir na captura do hero se `ã`, `õ` e `ê` colidem com a linha superior no `line-height` baixo da Bricolage; ajustar o `line-height` ou o headline se houver colisão.
 
-17. [ ] **Acessibilidade**
-    - [ ] Usar `header`, `nav`, `main`, seções com `aria-labelledby` e `footer`.
-    - [ ] Manter um único `h1`, headings sem saltos e `lang="pt-BR"`.
-    - [ ] Inserir skip link para `#hero` como primeiro foco.
-    - [ ] Rotular botões de ícone e manter ordem de foco igual à visual.
-    - [ ] Implementar FAQ com `<details>/<summary>` acessível por teclado, sem JavaScript.
-    - [ ] Tornar links de WhatsApp explícitos quanto ao destino e ao serviço.
+17. [x] **Acessibilidade**
+    - [x] Usar `header`, `nav`, `main`, seções com `aria-labelledby` e `footer`.
+    - [x] Manter um único `h1`, headings sem saltos e `lang="pt-BR"`.
+    - [x] Inserir skip link para `#hero` como primeiro foco.
+    - [x] Rotular botões de ícone e manter ordem de foco igual à visual.
+    - [x] Implementar FAQ com `<details>/<summary>` acessível por teclado, sem JavaScript.
+    - [x] Tornar links de WhatsApp explícitos quanto ao destino e ao serviço.
 
-18. [ ] **Entrega e critério de pronto**
-    - [ ] Manter este checklist atualizado e um commit/push por item concluído.
-    - [ ] Confirmar `npm run build`, lint e `tsc --noEmit` limpos.
-    - [ ] Confirmar `verificacao/relatorio.md` com FPS, p5, CLS, zero-slot, zero-overflow e inspeção visual escrita.
-    - [ ] Entregar resumo final com a linha visual, métricas versus alvos, lista dos IDs estáveis e qualquer desvio justificado.
+18. [x] **Entrega e critério de pronto**
+    - [x] Manter este checklist atualizado e um commit/push por item concluído.
+    - [x] Confirmar `npm run build`, lint e `tsc --noEmit` limpos.
+    - [x] Confirmar `verificacao/relatorio.md` com FPS, p5, CLS, zero-slot, zero-overflow e inspeção visual escrita.
+    - [x] Entregar resumo final com a linha visual, métricas versus alvos, lista dos IDs estáveis e qualquer desvio justificado.
 
 ## Árvore de arquivos planejada
 

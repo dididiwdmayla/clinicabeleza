@@ -21,7 +21,10 @@ export function Hero() {
             {apresentacao.texto}
           </p>
           <div className="hero__acoes" data-revelar style={{ "--i": 3 } as CSSProperties}>
-            <Botao href={criarLinkWhatsApp("Olá, Estúdio Nove. Quero consultar a agenda.")}>
+            <Botao
+              aria-label="Abrir o WhatsApp do Estúdio Nove para consultar a agenda"
+              href={criarLinkWhatsApp("Olá, Estúdio Nove. Quero consultar a agenda.")}
+            >
               Consultar agenda <IconeSeta />
             </Botao>
             <Botao href={criarLinkTelefone()} variante="contorno">
