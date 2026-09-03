@@ -8,22 +8,22 @@ export const credenciais = [
   {
     codigo: "01 / FICHA",
     titulo: "Avaliação antes do procedimento",
-    texto: "Histórico breve, condição atual e contraindicações conferidos antes do preparo.",
+    texto: "Histórico e contraindicações conferidos antes do preparo.",
   },
   {
     codigo: "02 / ABERTURA",
     titulo: "Descartáveis abertos à vista",
-    texto: "Lixas, palitos, fibras e consumíveis de uso individual entram novos na bancada.",
+    texto: "Consumíveis de uso individual entram novos na bancada.",
   },
   {
     codigo: "03 / CICLO",
     titulo: "Instrumental esterilizado",
-    texto: "Peças metálicas permanecem embaladas até o início do atendimento reservado.",
+    texto: "Peças metálicas permanecem embaladas até o atendimento.",
   },
   {
     codigo: "04 / PÓS",
     titulo: "Orientação entregue por escrito",
-    texto: "Cuidados, intervalo de retorno e sinais de atenção ficam registrados para consulta.",
+    texto: "Pós, retorno e sinais de atenção ficam registrados.",
   },
 ] as const satisfies readonly Credencial[];
 

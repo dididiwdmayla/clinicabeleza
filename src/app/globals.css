@@ -784,8 +784,8 @@ a {
 
 .credenciais__grade {
   display: grid;
-  gap: var(--esp-6);
-  padding-block: var(--esp-7);
+  gap: var(--esp-5);
+  padding-block: var(--esp-6);
 }
 
 .credenciais header > span,
