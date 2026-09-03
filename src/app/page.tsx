@@ -5,6 +5,7 @@ import { Equipe } from "@/components/secoes/Equipe";
 import { FAQ } from "@/components/secoes/FAQ";
 import { Galeria } from "@/components/secoes/Galeria";
 import { Hero } from "@/components/secoes/Hero";
+import { Localizacao } from "@/components/secoes/Localizacao";
 import { Protocolo } from "@/components/secoes/Protocolo";
 import { Precos } from "@/components/secoes/Precos";
 import { Servicos } from "@/components/secoes/Servicos";
@@ -28,6 +29,7 @@ export default function Home() {
         <Depoimentos />
         <Precos />
         <FAQ />
+        <Localizacao />
       </main>
     </>
   );
