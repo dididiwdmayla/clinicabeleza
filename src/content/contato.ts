@@ -15,6 +15,8 @@ export const contato = {
   estacionamento: "Duas vagas sinalizadas em frente ao estúdio.",
   mapaUrl: "https://maps.google.com/?q=Rua+das+Acacias+909+Maringa+PR",
   horarioResposta: "Mensagens respondidas em até 2 horas dentro do horário de atendimento.",
+  avisoLegal: "Projeto demonstrativo. Marca, profissionais, registros, endereço e contatos são fictícios.",
+  credito: "Direção e desenvolvimento / projeto editorial independente",
   horarios: [
     { dias: "SEG–SEX", periodo: "09:00–19:00" },
     { dias: "SÁB", periodo: "09:00–15:00" },
@@ -31,4 +33,3 @@ export const contato = {
     },
   },
 } as const;
-

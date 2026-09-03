@@ -9,6 +9,7 @@ import { Hero } from "@/components/secoes/Hero";
 import { Localizacao } from "@/components/secoes/Localizacao";
 import { Protocolo } from "@/components/secoes/Protocolo";
 import { Precos } from "@/components/secoes/Precos";
+import { Rodape } from "@/components/secoes/Rodape";
 import { Servicos } from "@/components/secoes/Servicos";
 import { Topo } from "@/components/secoes/Topo";
 import { Unhas } from "@/components/secoes/Unhas";
@@ -33,6 +34,7 @@ export default function Home() {
         <Localizacao />
         <Contato />
       </main>
+      <Rodape />
     </>
   );
 }
