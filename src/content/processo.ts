@@ -36,23 +36,23 @@ export type EtapaProtocolo = Readonly<{
 export const etapasProtocolo = [
   {
     codigo: "01",
-    titulo: "Leitura e registro",
+    titulo: "Avaliação e registro",
     texto: "Pele, unha ou área corporal são observadas antes de definir produto, pressão e tempo.",
   },
   {
     codigo: "02",
-    titulo: "Higienização e preparo",
-    texto: "A bancada é montada para o procedimento e a superfície recebe preparo compatível.",
+    titulo: "Execução calibrada",
+    texto: "Higienização, preparo e técnica seguem a sequência e a duração definidas na avaliação.",
   },
   {
     codigo: "03",
-    titulo: "Execução calibrada",
-    texto: "Camadas, manobras ou remoções seguem sequência e duração explicadas durante a sessão.",
+    titulo: "Orientação posterior",
+    texto: "Cuidados, sinais de atenção e intervalo seguro ficam registrados antes da saída.",
   },
   {
     codigo: "04",
-    titulo: "Conferência e cuidado posterior",
-    texto: "O resultado é revisado, fotografado quando autorizado e acompanhado de orientação de pós.",
+    titulo: "Retorno e conferência",
+    texto: "A evolução é comparada ao registro inicial e o próximo procedimento é ajustado quando necessário.",
   },
 ] as const satisfies readonly EtapaProtocolo[];
 
