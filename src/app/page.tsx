@@ -1,5 +1,6 @@
 import { Revelacao } from "@/components/clientes/Revelacao";
 import { Credenciais } from "@/components/secoes/Credenciais";
+import { Contato } from "@/components/secoes/Contato";
 import { Depoimentos } from "@/components/secoes/Depoimentos";
 import { Equipe } from "@/components/secoes/Equipe";
 import { FAQ } from "@/components/secoes/FAQ";
@@ -30,6 +31,7 @@ export default function Home() {
         <Precos />
         <FAQ />
         <Localizacao />
+        <Contato />
       </main>
     </>
   );
