@@ -1,5 +1,6 @@
 import { Revelacao } from "@/components/clientes/Revelacao";
 import { Credenciais } from "@/components/secoes/Credenciais";
+import { Depoimentos } from "@/components/secoes/Depoimentos";
 import { Equipe } from "@/components/secoes/Equipe";
 import { Galeria } from "@/components/secoes/Galeria";
 import { Hero } from "@/components/secoes/Hero";
@@ -22,6 +23,7 @@ export default function Home() {
         <Protocolo />
         <Galeria />
         <Equipe />
+        <Depoimentos />
       </main>
     </>
   );
