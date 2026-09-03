@@ -2,6 +2,7 @@ import { Revelacao } from "@/components/clientes/Revelacao";
 import { Credenciais } from "@/components/secoes/Credenciais";
 import { Depoimentos } from "@/components/secoes/Depoimentos";
 import { Equipe } from "@/components/secoes/Equipe";
+import { FAQ } from "@/components/secoes/FAQ";
 import { Galeria } from "@/components/secoes/Galeria";
 import { Hero } from "@/components/secoes/Hero";
 import { Protocolo } from "@/components/secoes/Protocolo";
@@ -26,6 +27,7 @@ export default function Home() {
         <Equipe />
         <Depoimentos />
         <Precos />
+        <FAQ />
       </main>
     </>
   );
