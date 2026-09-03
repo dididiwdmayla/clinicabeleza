@@ -107,4 +107,18 @@ export const itensGaleria = [
     nome: "Cera em repouso",
     src: "/img/assets/j-cera-000.webp",
   },
+  {
+    alt: "Aquecedor branco com cera âmbar parcialmente aquecida.",
+    codigo: "EQ 11 / 120",
+    legenda: "Textura em transição",
+    nome: "Cera em aquecimento",
+    src: "/img/assets/k-cera-120.webp",
+  },
+  {
+    alt: "Aquecedor branco com cera âmbar fluida e pronta para uso.",
+    codigo: "EQ 12 / 240",
+    legenda: "Ponto de trabalho conferido",
+    nome: "Cera preparada",
+    src: "/img/assets/l-cera-240.webp",
+  },
 ] as const satisfies readonly ItemGaleria[];

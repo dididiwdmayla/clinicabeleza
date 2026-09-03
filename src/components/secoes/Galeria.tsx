@@ -24,7 +24,7 @@ export function Galeria() {
                 <Image
                   alt={item.alt}
                   fill
-                  sizes="(min-width: 64rem) 32vw, (min-width: 30rem) 46vw, 90vw"
+                  sizes="(min-width: 64rem) 44vw, (min-width: 30rem) 46vw, 90vw"
                   src={item.src}
                   unoptimized
                 />
