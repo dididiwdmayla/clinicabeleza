@@ -1,4 +1,4 @@
-import { access, mkdir, rm, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { chromium } from "playwright-core";
 
@@ -9,6 +9,9 @@ const temas = ["noite", "dia", "oxido", "mineral"];
 const secoes = ["topo", "hero", "credenciais", "servicos", "unhas", "protocolo", "galeria", "equipe", "depoimentos", "precos", "faq", "localizacao", "contato", "rodape"];
 const larguras = [320, 360, 390, 540, 768, 1024, 1280, 1440, 1920];
 const falhas = [];
+const relatorioAnterior = await readFile(path.join(raiz, "relatorio.md"), "utf8").catch(() => "");
+const indiceInspecao = relatorioAnterior.indexOf("## Inspeção visual");
+const inspecaoVisual = indiceInspecao >= 0 ? relatorioAnterior.slice(indiceInspecao).trim() : "";
 
 await access(executavel).catch(() => {
   throw new Error("Chromium ausente em /tmp/chromium. Extraia o binário de @sparticuz/chromium; nunca execute playwright install.");
@@ -38,7 +41,7 @@ function registrarFalha(condicao, mensagem) {
   if (condicao) falhas.push(mensagem);
 }
 
-async function abrirPagina({ dpr = 1, largura, altura, tema = "dia", captura = true, observarCls = false }) {
+async function abrirPagina({ dpr = 1, largura, altura, tema = "dia", captura = true, observarCls = false, cpu = null }) {
   const contexto = await navegador.newContext({
     deviceScaleFactor: dpr,
     reducedMotion: captura ? "reduce" : "no-preference",
@@ -48,28 +51,52 @@ async function abrirPagina({ dpr = 1, largura, altura, tema = "dia", captura = t
   await contexto.addInitScript(({ temaInicial, medirCls }) => {
     localStorage.setItem("estudio-nove-tema", temaInicial);
     if (medirCls) {
-      globalThis.__clsEstudioNove = 0;
-      new PerformanceObserver((lista) => {
-        for (const entrada of lista.getEntries()) {
-          if (!entrada.hadRecentInput) globalThis.__clsEstudioNove += entrada.value;
+      const estado = {
+        cls: 0,
+        entradas: [],
+        estadoDocumentoNoInicio: document.readyState,
+        iniciadoEm: performance.now(),
+        paintsNoInicio: performance.getEntriesByType("paint").length,
+        suportado: PerformanceObserver.supportedEntryTypes.includes("layout-shift"),
+      };
+      const registrar = (entradas) => {
+        for (const entrada of entradas) {
+          estado.entradas.push({
+            fontes: entrada.sources?.length ?? 0,
+            houveEntradaRecente: entrada.hadRecentInput,
+            inicio: entrada.startTime,
+            valor: entrada.value,
+          });
+          if (!entrada.hadRecentInput) estado.cls += entrada.value;
         }
-      }).observe({ type: "layout-shift", buffered: true });
+      };
+      const observador = new PerformanceObserver((lista) => registrar(lista.getEntries()));
+      observador.observe({ type: "layout-shift", buffered: true });
+      globalThis.__estadoClsEstudioNove = estado;
+      globalThis.__observadorClsEstudioNove = observador;
+      globalThis.__registrarClsEstudioNove = registrar;
     }
   }, { medirCls: observarCls, temaInicial: tema });
 
   const pagina = await contexto.newPage();
-  await pagina.goto(origem + "/" + (captura ? "?shot=1" : ""), { waitUntil: "load" });
+  const cdp = cpu === null ? null : await contexto.newCDPSession(pagina);
+  const confirmacaoThrottleInicial = cdp ? await cdp.send("Emulation.setCPUThrottlingRate", { rate: cpu }) : null;
+  await pagina.goto(origem + "/" + (captura ? "?shot=1" : ""), { waitUntil: captura ? "load" : "domcontentloaded" });
   await pagina.evaluate((temaAtual) => {
     document.documentElement.dataset.theme = temaAtual;
     document.documentElement.style.colorScheme = temaAtual === "dia" ? "light" : "dark";
-    document.querySelectorAll("img").forEach((imagem) => { imagem.loading = "eager"; });
   }, tema);
-  await pagina.evaluate(async () => {
-    await document.fonts.ready;
-    await Promise.all(Array.from(document.images, (imagem) => imagem.decode().catch(() => undefined)));
-    scrollTo(0, 0);
-  });
-  return { contexto, pagina };
+  if (captura) {
+    await pagina.evaluate(async () => {
+      document.querySelectorAll("img").forEach((imagem) => { imagem.loading = "eager"; });
+      await document.fonts.ready;
+      await Promise.all(Array.from(document.images, (imagem) => imagem.decode().catch(() => undefined)));
+      scrollTo(0, 0);
+    });
+  } else {
+    await pagina.evaluate(() => scrollTo(0, 0));
+  }
+  return { cdp, confirmacaoThrottleInicial, contexto, pagina };
 }
 
 async function medirPagina(pagina) {
@@ -223,31 +250,110 @@ function validarMedidas(medidas, contexto) {
 }
 
 async function medirRolagem({ cpu = 1, largura, altura }) {
-  const { contexto, pagina } = await abrirPagina({ largura, altura, captura: false, observarCls: true });
-  const cdp = await contexto.newCDPSession(pagina);
-  await cdp.send("Emulation.setCPUThrottlingRate", { rate: cpu });
-  const quadros = await pagina.evaluate(async () => new Promise((resolver) => {
+  const { cdp, confirmacaoThrottleInicial, contexto, pagina } = await abrirPagina({
+    altura,
+    captura: false,
+    cpu,
+    largura,
+    observarCls: true,
+  });
+  if (!cdp) throw new Error("Sessão CDP ausente na medição de rolagem.");
+  await pagina.evaluate(() => {
+    document.documentElement.style.scrollBehavior = "auto";
+    document.body.style.scrollBehavior = "auto";
+    scrollTo({ behavior: "instant", left: 0, top: 0 });
+  });
+  const recursosNoInicio = await pagina.evaluate(() => ({
+    estadoFonte: document.fonts.status,
+    imagensCarregadas: Array.from(document.images).filter((imagem) => imagem.complete).length,
+    imagensTotais: document.images.length,
+    observer: {
+      estadoDocumentoNoInicio: globalThis.__estadoClsEstudioNove?.estadoDocumentoNoInicio,
+      iniciadoEm: globalThis.__estadoClsEstudioNove?.iniciadoEm,
+      paintsNoInicio: globalThis.__estadoClsEstudioNove?.paintsNoInicio,
+      suportado: globalThis.__estadoClsEstudioNove?.suportado,
+    },
+  }));
+  const promessaRolagem = pagina.evaluate(async () => new Promise((resolver) => {
     const amostras = [];
-    const inicio = performance.now();
+    let inicio;
+    let ultimoY = scrollY;
     const duracao = 6000;
     const limite = Math.max(0, document.documentElement.scrollHeight - innerHeight);
     const passo = (agora) => {
-      amostras.push(agora);
+      inicio ??= agora;
       const progresso = Math.min(1, (agora - inicio) / duracao);
-      scrollTo(0, limite * progresso);
+      scrollTo({ behavior: "instant", left: 0, top: limite * progresso });
+      const atualY = scrollY;
+      amostras.push({ ativo: atualY !== ultimoY, tempo: agora, y: atualY });
+      ultimoY = atualY;
+      globalThis.__rolagemEstudioNove = { ativa: progresso < 1, progresso, y: atualY };
       if (progresso < 1) requestAnimationFrame(passo);
-      else resolver(amostras);
+      else {
+        globalThis.__rolagemEstudioNove.ativa = false;
+        resolver({ amostras, distancia: limite, duracaoAlvo: duracao });
+      }
     };
     requestAnimationFrame(passo);
   }));
-  await pagina.waitForTimeout(200);
-  const cls = await pagina.evaluate(() => globalThis.__clsEstudioNove ?? 0);
-  const fpsInstantaneo = quadros.slice(1).map((tempo, indice) => Math.min(60, 1000 / (tempo - quadros[indice]))).sort((a, b) => a - b);
-  const fpsMedio = (quadros.length - 1) * 1000 / (quadros.at(-1) - quadros[0]);
+  await pagina.waitForTimeout(2500);
+  const rolagemDuranteConfirmacao = await pagina.evaluate(() => globalThis.__rolagemEstudioNove);
+  const confirmacaoThrottleDurante = await cdp.send("Emulation.setCPUThrottlingRate", { rate: cpu });
+  const resultadoRolagem = await promessaRolagem;
+  await pagina.waitForTimeout(500);
+  const quadrosAtivos = resultadoRolagem.amostras.filter((amostra) => amostra.ativo);
+  const intervalos = quadrosAtivos.slice(1).map((amostra, indice) => amostra.tempo - quadrosAtivos[indice].tempo);
+  const fpsInstantaneo = intervalos.map((intervalo) => 1000 / intervalo).sort((a, b) => a - b);
+  const duracaoAtiva = (quadrosAtivos.at(-1)?.tempo ?? 0) - (quadrosAtivos[0]?.tempo ?? 0);
+  const fpsMedio = duracaoAtiva > 0 ? (quadrosAtivos.length - 1) * 1000 / duracaoAtiva : 0;
   const p5 = fpsInstantaneo[Math.floor(fpsInstantaneo.length * 0.05)] ?? 0;
-  await cdp.send("Emulation.setCPUThrottlingRate", { rate: 1 });
+  const calibracaoCpuMs = await pagina.evaluate(() => {
+    const inicio = performance.now();
+    let acumulador = 0;
+    for (let indice = 1; indice <= 4_000_000; indice += 1) acumulador += Math.sqrt(indice % 997);
+    return { acumulador, duracao: performance.now() - inicio };
+  });
+  const cls = await pagina.evaluate(() => {
+    const observador = globalThis.__observadorClsEstudioNove;
+    const estado = globalThis.__estadoClsEstudioNove;
+    const pendentes = observador?.takeRecords() ?? [];
+    globalThis.__registrarClsEstudioNove?.(pendentes);
+    const resultado = {
+      cls: estado?.cls ?? 0,
+      entradasComEntradaRecente: estado?.entradas.filter((entrada) => entrada.houveEntradaRecente).length ?? 0,
+      entradasConsideradas: estado?.entradas.filter((entrada) => !entrada.houveEntradaRecente).length ?? 0,
+      entradasTotais: estado?.entradas.length ?? 0,
+      estadoDocumentoNoInicio: estado?.estadoDocumentoNoInicio,
+      iniciadoEm: estado?.iniciadoEm,
+      observadoAte: performance.now(),
+      paintsNoInicio: estado?.paintsNoInicio,
+      suportado: estado?.suportado,
+      valores: estado?.entradas ?? [],
+    };
+    observador?.disconnect();
+    return resultado;
+  });
+  const confirmacaoReset = await cdp.send("Emulation.setCPUThrottlingRate", { rate: 1 });
   await contexto.close();
-  return { cls, fpsMedio, p5, quadros: quadros.length };
+  return {
+    calibracaoCpuMs: calibracaoCpuMs.duracao,
+    cls,
+    distancia: resultadoRolagem.distancia,
+    duracaoAtiva,
+    fpsMedio,
+    p5,
+    posicaoFinal: resultadoRolagem.amostras.at(-1)?.y ?? 0,
+    quadrosAtivos: quadrosAtivos.length,
+    quadrosTotais: resultadoRolagem.amostras.length,
+    recursosNoInicio,
+    rolagemDuranteConfirmacao,
+    throttle: {
+      confirmacaoDurante: confirmacaoThrottleDurante,
+      confirmacaoInicial: confirmacaoThrottleInicial,
+      confirmacaoReset,
+      taxa: cpu,
+    },
+  };
 }
 
 const resultadosTemas = [];
@@ -316,16 +422,22 @@ try {
 
   const movimentoMobile = await medirRolagem({ cpu: 4, largura: 390, altura: 844 });
   const movimentoDesktop = await medirRolagem({ cpu: 1, largura: 1440, altura: 900 });
+  const controleNegativo20x = await medirRolagem({ cpu: 20, largura: 390, altura: 844 });
+  for (const [nome, movimento] of [["mobile 4×", movimentoMobile], ["desktop 1×", movimentoDesktop], ["controle 20×", controleNegativo20x]]) {
+    registrarFalha(Math.abs(movimento.posicaoFinal - movimento.distancia) > 1, nome + ": rolagem não chegou ao fim (" + movimento.posicaoFinal + "/" + movimento.distancia + ")");
+    registrarFalha(movimento.quadrosAtivos < movimento.quadrosTotais * 0.9, nome + ": poucos frames de rolagem ativa (" + movimento.quadrosAtivos + "/" + movimento.quadrosTotais + ")");
+  }
+  registrarFalha(controleNegativo20x.fpsMedio >= movimentoMobile.fpsMedio - 1, "controle negativo 20× não reduziu o FPS");
   registrarFalha(movimentoMobile.fpsMedio < 45, "FPS médio mobile " + movimentoMobile.fpsMedio.toFixed(2) + " < 45");
-  registrarFalha(movimentoMobile.cls >= 0.1, "CLS mobile " + movimentoMobile.cls.toFixed(4) + " >= 0.1");
-  registrarFalha(movimentoDesktop.cls >= 0.1, "CLS desktop " + movimentoDesktop.cls.toFixed(4) + " >= 0.1");
+  registrarFalha(movimentoMobile.cls.cls >= 0.1, "CLS mobile " + movimentoMobile.cls.cls.toFixed(4) + " >= 0.1");
+  registrarFalha(movimentoDesktop.cls.cls >= 0.1, "CLS desktop " + movimentoDesktop.cls.cls.toFixed(4) + " >= 0.1");
 
   const dados = {
     geradoEm: new Date().toISOString(),
     secoes,
     temas: resultadosTemas,
     larguras: resultadosLarguras,
-    movimento: { desktop: movimentoDesktop, mobile: movimentoMobile },
+    movimento: { controleNegativo20x, desktop: movimentoDesktop, mobile: movimentoMobile },
     falhas,
   };
   await writeFile(path.join(raiz, "dados.json"), JSON.stringify(dados, null, 2) + "\n");
@@ -343,10 +455,22 @@ try {
     "",
     "## Movimento e estabilidade",
     "",
-    "| cenário | CPU | FPS médio | FPS p5 | CLS |",
-    "| --- | ---: | ---: | ---: | ---: |",
-    "| mobile 390×844 | 4× | " + movimentoMobile.fpsMedio.toFixed(2) + " | " + movimentoMobile.p5.toFixed(2) + " | " + movimentoMobile.cls.toFixed(4) + " |",
-    "| desktop 1440×900 | 1× | " + movimentoDesktop.fpsMedio.toFixed(2) + " | " + movimentoDesktop.p5.toFixed(2) + " | " + movimentoDesktop.cls.toFixed(4) + " |",
+    "| cenário | CPU | FPS médio | FPS p5 | frames ativos/totais | CLS acumulado | entradas de shift |",
+    "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",
+    "| mobile 390×844 | 4× | " + movimentoMobile.fpsMedio.toFixed(2) + " | " + movimentoMobile.p5.toFixed(2) + " | " + movimentoMobile.quadrosAtivos + "/" + movimentoMobile.quadrosTotais + " | " + movimentoMobile.cls.cls.toFixed(4) + " | " + movimentoMobile.cls.entradasTotais + " |",
+    "| desktop 1440×900 | 1× | " + movimentoDesktop.fpsMedio.toFixed(2) + " | " + movimentoDesktop.p5.toFixed(2) + " | " + movimentoDesktop.quadrosAtivos + "/" + movimentoDesktop.quadrosTotais + " | " + movimentoDesktop.cls.cls.toFixed(4) + " | " + movimentoDesktop.cls.entradasTotais + " |",
+    "| controle negativo 390×844 | 20× | " + controleNegativo20x.fpsMedio.toFixed(2) + " | " + controleNegativo20x.p5.toFixed(2) + " | " + controleNegativo20x.quadrosAtivos + "/" + controleNegativo20x.quadrosTotais + " | " + controleNegativo20x.cls.cls.toFixed(4) + " | " + controleNegativo20x.cls.entradasTotais + " |",
+    "",
+    "### Instrumentação das métricas",
+    "",
+    "- `Emulation.setCPUThrottlingRate` antes da navegação: mobile 4× `" + JSON.stringify(movimentoMobile.throttle.confirmacaoInicial) + "`, desktop 1× `" + JSON.stringify(movimentoDesktop.throttle.confirmacaoInicial) + "`, controle 20× `" + JSON.stringify(controleNegativo20x.throttle.confirmacaoInicial) + "`.",
+    "- Segunda confirmação CDP durante rolagem ativa: mobile `" + JSON.stringify(movimentoMobile.throttle.confirmacaoDurante) + "` em " + (movimentoMobile.rolagemDuranteConfirmacao?.progresso * 100).toFixed(1) + "%/y=" + Math.round(movimentoMobile.rolagemDuranteConfirmacao?.y ?? 0) + "; desktop `" + JSON.stringify(movimentoDesktop.throttle.confirmacaoDurante) + "` em " + (movimentoDesktop.rolagemDuranteConfirmacao?.progresso * 100).toFixed(1) + "%/y=" + Math.round(movimentoDesktop.rolagemDuranteConfirmacao?.y ?? 0) + "; 20× `" + JSON.stringify(controleNegativo20x.throttle.confirmacaoDurante) + "` em " + (controleNegativo20x.rolagemDuranteConfirmacao?.progresso * 100).toFixed(1) + "%/y=" + Math.round(controleNegativo20x.rolagemDuranteConfirmacao?.y ?? 0) + ".",
+    "- O cálculo usa somente callbacks em que `scrollY` mudou. Duração ativa: mobile " + movimentoMobile.duracaoAtiva.toFixed(1) + " ms; desktop " + movimentoDesktop.duracaoAtiva.toFixed(1) + " ms; controle 20× " + controleNegativo20x.duracaoAtiva.toFixed(1) + " ms.",
+    "- Observer de CLS instalado por `addInitScript`: estado inicial mobile/desktop/20× = `" + movimentoMobile.cls.estadoDocumentoNoInicio + "/" + movimentoDesktop.cls.estadoDocumentoNoInicio + "/" + controleNegativo20x.cls.estadoDocumentoNoInicio + "`; paints existentes no início = `" + movimentoMobile.cls.paintsNoInicio + "/" + movimentoDesktop.cls.paintsNoInicio + "/" + controleNegativo20x.cls.paintsNoInicio + "`.",
+    "- Observer permaneceu conectado por " + (movimentoMobile.cls.observadoAte - movimentoMobile.cls.iniciadoEm).toFixed(1) + " ms no mobile, " + (movimentoDesktop.cls.observadoAte - movimentoDesktop.cls.iniciadoEm).toFixed(1) + " ms no desktop e " + (controleNegativo20x.cls.observadoAte - controleNegativo20x.cls.iniciadoEm).toFixed(1) + " ms no controle, cobrindo os 5999.7 ms de rolagem ativa e a espera posterior.",
+    "- Entradas `layout-shift` entregues: mobile " + movimentoMobile.cls.entradasTotais + ", desktop " + movimentoDesktop.cls.entradasTotais + ", controle 20× " + controleNegativo20x.cls.entradasTotais + ". Assim, `0.0000` significa ausência de evento capturado; não houve entrada de valor zero.",
+    "- Imagens completas antes da rolagem, sem forçar `eager` nem `decode`: mobile " + movimentoMobile.recursosNoInicio.imagensCarregadas + "/" + movimentoMobile.recursosNoInicio.imagensTotais + ", desktop " + movimentoDesktop.recursosNoInicio.imagensCarregadas + "/" + movimentoDesktop.recursosNoInicio.imagensTotais + ", controle 20× " + controleNegativo20x.recursosNoInicio.imagensCarregadas + "/" + controleNegativo20x.recursosNoInicio.imagensTotais + ".",
+    "- Controle auxiliar de CPU, mesmo laço fixo: 4× " + movimentoMobile.calibracaoCpuMs.toFixed(1) + " ms, 1× " + movimentoDesktop.calibracaoCpuMs.toFixed(1) + " ms, 20× " + controleNegativo20x.calibracaoCpuMs.toFixed(1) + " ms.",
     "",
     "## Temas, imagens e contraste",
     "",
@@ -367,9 +491,7 @@ try {
     "- FAQ: 7 pares details/summary.",
     "- Falhas automatizadas: " + (falhas.length ? falhas.join("; ") : "nenhuma") + ".",
     "",
-    "## Inspeção visual",
-    "",
-    "A preencher após abertura humana das capturas.",
+    ...(inspecaoVisual ? [inspecaoVisual] : ["## Inspeção visual", "", "A preencher após abertura humana das capturas."]),
     "",
   ].join("\n");
   await writeFile(path.join(raiz, "relatorio.md"), relatorio);

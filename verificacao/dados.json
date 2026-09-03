@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-09-02T09:03:45.668Z",
+  "geradoEm": "2026-09-03T04:40:53.016Z",
   "secoes": [
     "topo",
     "hero",
@@ -1987,4 +1987,668 @@
             "paiAltura": 308,
             "paiLargura": 308,
             "sizes": "next/image:fill",
-            "s
+            "src": "/img/assets/c-pinca-aco.webp"
+          },
+          {
+            "altura": 308,
+            "largura": 308,
+            "paiAltura": 308,
+            "paiLargura": 308,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/d-frasco-ambar.webp"
+          },
+          {
+            "altura": 316,
+            "largura": 632,
+            "paiAltura": 316,
+            "paiLargura": 632,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/e-cabine-led.webp"
+          },
+          {
+            "altura": 416,
+            "largura": 416,
+            "paiAltura": 416,
+            "paiLargura": 416,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/f-pincel-nail-art.webp"
+          },
+          {
+            "altura": 416,
+            "largura": 416,
+            "paiAltura": 416,
+            "paiLargura": 416,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/g-espatula-extracao.webp"
+          },
+          {
+            "altura": 416,
+            "largura": 416,
+            "paiAltura": 416,
+            "paiLargura": 416,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/j-cera-000.webp"
+          },
+          {
+            "altura": 316,
+            "largura": 632,
+            "paiAltura": 316,
+            "paiLargura": 632,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/k-cera-120.webp"
+          },
+          {
+            "altura": 316,
+            "largura": 632,
+            "paiAltura": 316,
+            "paiLargura": 632,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/l-cera-240.webp"
+          },
+          {
+            "altura": 506.66,
+            "largura": 405.33,
+            "paiAltura": 506.66,
+            "paiLargura": 405.33,
+            "sizes": "next/image:fill",
+            "src": "/img/equipe/profissional-01.webp"
+          },
+          {
+            "altura": 506.67,
+            "largura": 405.34,
+            "paiAltura": 506.67,
+            "paiLargura": 405.34,
+            "sizes": "next/image:fill",
+            "src": "/img/equipe/profissional-02.webp"
+          }
+        ],
+        "linhasCartoes": [
+          {
+            "alturas": [
+              606,
+              606,
+              606
+            ],
+            "botoes": [
+              2191,
+              2191,
+              2191
+            ],
+            "esquerdas": [
+              80,
+              512,
+              944
+            ]
+          },
+          {
+            "alturas": [
+              576,
+              576
+            ],
+            "botoes": [
+              2783,
+              2783
+            ],
+            "esquerdas": [
+              80,
+              512
+            ]
+          }
+        ],
+        "secaoAninhada": 0,
+        "secoes": [
+          {
+            "altura": 73,
+            "contrato": true,
+            "id": "topo",
+            "revelar": 3
+          },
+          {
+            "altura": 871.3,
+            "contrato": true,
+            "id": "hero",
+            "revelar": 6
+          },
+          {
+            "altura": 273.53,
+            "contrato": true,
+            "id": "credenciais",
+            "revelar": 5
+          },
+          {
+            "altura": 1749.47,
+            "contrato": true,
+            "id": "servicos",
+            "revelar": 7
+          },
+          {
+            "altura": 1993.02,
+            "contrato": true,
+            "id": "unhas",
+            "revelar": 9
+          },
+          {
+            "altura": 1170.39,
+            "contrato": true,
+            "id": "protocolo",
+            "revelar": 7
+          },
+          {
+            "altura": 2075.77,
+            "contrato": true,
+            "id": "galeria",
+            "revelar": 10
+          },
+          {
+            "altura": 1954.52,
+            "contrato": true,
+            "id": "equipe",
+            "revelar": 4
+          },
+          {
+            "altura": 1059.47,
+            "contrato": true,
+            "id": "depoimentos",
+            "revelar": 7
+          },
+          {
+            "altura": 1273.7,
+            "contrato": true,
+            "id": "precos",
+            "revelar": 3
+          },
+          {
+            "altura": 773.78,
+            "contrato": true,
+            "id": "faq",
+            "revelar": 9
+          },
+          {
+            "altura": 1193.61,
+            "contrato": true,
+            "id": "localizacao",
+            "revelar": 6
+          },
+          {
+            "altura": 466.92,
+            "contrato": true,
+            "id": "contato",
+            "revelar": 2
+          },
+          {
+            "altura": 543.31,
+            "contrato": true,
+            "id": "rodape",
+            "revelar": 4
+          }
+        ],
+        "servicosEsquerda": {
+          "grade": 80,
+          "primeiraUltimaLinha": 80
+        },
+        "tabela": {
+          "clientWidth": 1280,
+          "scrollWidth": 1280
+        },
+        "titulosH1": 1
+      }
+    }
+  ],
+  "larguras": [
+    {
+      "largura": 320,
+      "medidas": {
+        "contraste": {
+          "amostras": 328,
+          "pior": 4.7,
+          "violacoes": []
+        },
+        "documento": {
+          "altura": 24170,
+          "clientWidth": 320,
+          "scrollWidth": 320
+        },
+        "faq": 7,
+        "imagens": [
+          {
+            "altura": 348,
+            "largura": 278,
+            "paiAltura": 350,
+            "paiLargura": 280,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/h-kit-manicure-explodido.webp"
+          },
+          {
+            "altura": 276,
+            "largura": 276,
+            "paiAltura": 276,
+            "paiLargura": 276,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/a-gel-curado.webp"
+          },
+          {
+            "altura": 276,
+            "largura": 276,
+            "paiAltura": 276,
+            "paiLargura": 276,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/b-fibra-vidro.webp"
+          },
+          {
+            "altura": 155.5,
+            "largura": 278,
+            "paiAltura": 157.5,
+            "paiLargura": 280,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/i-protocolo-pele-explodido.webp"
+          },
+          {
+            "altura": 280,
+            "largura": 280,
+            "paiAltura": 280,
+            "paiLargura": 280,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/c-pinca-aco.webp"
+          },
+          {
+            "altura": 280,
+            "largura": 280,
+            "paiAltura": 280,
+            "paiLargura": 280,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/d-frasco-ambar.webp"
+          },
+          {
+            "altura": 280,
+            "largura": 280,
+            "paiAltura": 280,
+            "paiLargura": 280,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/e-cabine-led.webp"
+          },
+          {
+            "altura": 280,
+            "largura": 280,
+            "paiAltura": 280,
+            "paiLargura": 280,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/f-pincel-nail-art.webp"
+          },
+          {
+            "altura": 280,
+            "largura": 280,
+            "paiAltura": 280,
+            "paiLargura": 280,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/g-espatula-extracao.webp"
+          },
+          {
+            "altura": 280,
+            "largura": 280,
+            "paiAltura": 280,
+            "paiLargura": 280,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/j-cera-000.webp"
+          },
+          {
+            "altura": 280,
+            "largura": 280,
+            "paiAltura": 280,
+            "paiLargura": 280,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/k-cera-120.webp"
+          },
+          {
+            "altura": 280,
+            "largura": 280,
+            "paiAltura": 280,
+            "paiLargura": 280,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/l-cera-240.webp"
+          },
+          {
+            "altura": 350,
+            "largura": 280,
+            "paiAltura": 350,
+            "paiLargura": 280,
+            "sizes": "next/image:fill",
+            "src": "/img/equipe/profissional-01.webp"
+          },
+          {
+            "altura": 350,
+            "largura": 280,
+            "paiAltura": 350,
+            "paiLargura": 280,
+            "sizes": "next/image:fill",
+            "src": "/img/equipe/profissional-02.webp"
+          }
+        ],
+        "linhasCartoes": [
+          {
+            "alturas": [
+              664
+            ],
+            "botoes": [
+              3172
+            ],
+            "esquerdas": [
+              20
+            ]
+          },
+          {
+            "alturas": [
+              689
+            ],
+            "botoes": [
+              3877
+            ],
+            "esquerdas": [
+              20
+            ]
+          },
+          {
+            "alturas": [
+              600
+            ],
+            "botoes": [
+              4493
+            ],
+            "esquerdas": [
+              20
+            ]
+          },
+          {
+            "alturas": [
+              640
+            ],
+            "botoes": [
+              5149
+            ],
+            "esquerdas": [
+              20
+            ]
+          },
+          {
+            "alturas": [
+              690
+            ],
+            "botoes": [
+              5855
+            ],
+            "esquerdas": [
+              20
+            ]
+          }
+        ],
+        "secaoAninhada": 0,
+        "secoes": [
+          {
+            "altura": 73,
+            "contrato": true,
+            "id": "topo",
+            "revelar": 3
+          },
+          {
+            "altura": 1297.34,
+            "contrato": true,
+            "id": "hero",
+            "revelar": 6
+          },
+          {
+            "altura": 754.19,
+            "contrato": true,
+            "id": "credenciais",
+            "revelar": 5
+          },
+          {
+            "altura": 3828.05,
+            "contrato": true,
+            "id": "servicos",
+            "revelar": 7
+          },
+          {
+            "altura": 3126.34,
+            "contrato": true,
+            "id": "unhas",
+            "revelar": 9
+          },
+          {
+            "altura": 1514.17,
+            "contrato": true,
+            "id": "protocolo",
+            "revelar": 7
+          },
+          {
+            "altura": 3765.66,
+            "contrato": true,
+            "id": "galeria",
+            "revelar": 10
+          },
+          {
+            "altura": 2110.69,
+            "contrato": true,
+            "id": "equipe",
+            "revelar": 4
+          },
+          {
+            "altura": 1854.69,
+            "contrato": true,
+            "id": "depoimentos",
+            "revelar": 7
+          },
+          {
+            "altura": 1642.7,
+            "contrato": true,
+            "id": "precos",
+            "revelar": 3
+          },
+          {
+            "altura": 1090.86,
+            "contrato": true,
+            "id": "faq",
+            "revelar": 9
+          },
+          {
+            "altura": 1513.61,
+            "contrato": true,
+            "id": "localizacao",
+            "revelar": 6
+          },
+          {
+            "altura": 660.84,
+            "contrato": true,
+            "id": "contato",
+            "revelar": 2
+          },
+          {
+            "altura": 937.88,
+            "contrato": true,
+            "id": "rodape",
+            "revelar": 4
+          }
+        ],
+        "servicosEsquerda": {
+          "grade": 20,
+          "primeiraUltimaLinha": 20
+        },
+        "tabela": {
+          "clientWidth": 280,
+          "scrollWidth": 280
+        },
+        "titulosH1": 1
+      }
+    },
+    {
+      "largura": 360,
+      "medidas": {
+        "contraste": {
+          "amostras": 328,
+          "pior": 4.7,
+          "violacoes": []
+        },
+        "documento": {
+          "altura": 23838,
+          "clientWidth": 360,
+          "scrollWidth": 360
+        },
+        "faq": 7,
+        "imagens": [
+          {
+            "altura": 398,
+            "largura": 318,
+            "paiAltura": 400,
+            "paiLargura": 320,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/h-kit-manicure-explodido.webp"
+          },
+          {
+            "altura": 316,
+            "largura": 316,
+            "paiAltura": 316,
+            "paiLargura": 316,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/a-gel-curado.webp"
+          },
+          {
+            "altura": 316,
+            "largura": 316,
+            "paiAltura": 316,
+            "paiLargura": 316,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/b-fibra-vidro.webp"
+          },
+          {
+            "altura": 178,
+            "largura": 318,
+            "paiAltura": 180,
+            "paiLargura": 320,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/i-protocolo-pele-explodido.webp"
+          },
+          {
+            "altura": 320,
+            "largura": 320,
+            "paiAltura": 320,
+            "paiLargura": 320,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/c-pinca-aco.webp"
+          },
+          {
+            "altura": 320,
+            "largura": 320,
+            "paiAltura": 320,
+            "paiLargura": 320,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/d-frasco-ambar.webp"
+          },
+          {
+            "altura": 320,
+            "largura": 320,
+            "paiAltura": 320,
+            "paiLargura": 320,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/e-cabine-led.webp"
+          },
+          {
+            "altura": 320,
+            "largura": 320,
+            "paiAltura": 320,
+            "paiLargura": 320,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/f-pincel-nail-art.webp"
+          },
+          {
+            "altura": 320,
+            "largura": 320,
+            "paiAltura": 320,
+            "paiLargura": 320,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/g-espatula-extracao.webp"
+          },
+          {
+            "altura": 320,
+            "largura": 320,
+            "paiAltura": 320,
+            "paiLargura": 320,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/j-cera-000.webp"
+          },
+          {
+            "altura": 320,
+            "largura": 320,
+            "paiAltura": 320,
+            "paiLargura": 320,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/k-cera-120.webp"
+          },
+          {
+            "altura": 320,
+            "largura": 320,
+            "paiAltura": 320,
+            "paiLargura": 320,
+            "sizes": "next/image:fill",
+            "src": "/img/assets/l-cera-240.webp"
+          },
+          {
+            "altura": 400,
+            "largura": 320,
+            "paiAltura": 400,
+            "paiLargura": 320,
+            "sizes": "next/image:fill",
+            "src": "/img/equipe/profissional-01.webp"
+          },
+          {
+            "altura": 400,
+            "largura": 320,
+            "paiAltura": 400,
+            "paiLargura": 320,
+            "sizes": "next/image:fill",
+            "src": "/img/equipe/profissional-02.webp"
+          }
+        ],
+        "linhasCartoes": [
+          {
+            "alturas": [
+              575
+            ],
+            "botoes": [
+              3006
+            ],
+            "esquerdas": [
+              20
+            ]
+          },
+          {
+            "alturas": [
+              639
+            ],
+            "botoes": [
+              3661
+            ],
+            "esquerdas": [
+              20
+            ]
+          },
+          {
+            "alturas": [
+              600
+            ],
+            "botoes": [
+              4277
+            ],
+            "esquerdas": [
+              20
+            ]
+          },
+          {
+            "alturas": [
+              614
+            ],
+            "botoes": [
+              4908
+            ],
+            "esquerdas": [
+              20
+            ]
+          },
+        

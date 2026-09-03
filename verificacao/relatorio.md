@@ -1,13 +1,25 @@
 # Relatório de verificação — ESTÚDIO NOVE
 
-Gerado em 2026-09-02T09:03:45.668Z. Valores obtidos pelo Chromium em /tmp/chromium; nenhuma métrica abaixo é estimada.
+Gerado em 2026-09-03T04:40:53.016Z. Valores obtidos pelo Chromium em /tmp/chromium; nenhuma métrica abaixo é estimada.
 
 ## Movimento e estabilidade
 
-| cenário | CPU | FPS médio | FPS p5 | CLS |
-| --- | ---: | ---: | ---: | ---: |
-| mobile 390×844 | 4× | 60.00 | 59.88 | 0.0000 |
-| desktop 1440×900 | 1× | 60.00 | 59.88 | 0.0000 |
+| cenário | CPU | FPS médio | FPS p5 | frames ativos/totais | CLS acumulado | entradas de shift |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| mobile 390×844 | 4× | 58.34 | 59.52 | 351/352 | 0.0000 | 0 |
+| desktop 1440×900 | 1× | 57.67 | 59.52 | 347/348 | 0.0000 | 0 |
+| controle negativo 390×844 | 20× | 36.84 | 15.02 | 222/223 | 0.0000 | 0 |
+
+### Instrumentação das métricas
+
+- `Emulation.setCPUThrottlingRate` antes da navegação: mobile 4× `{}`, desktop 1× `{}`, controle 20× `{}`.
+- Segunda confirmação CDP durante rolagem ativa: mobile `{}` em 41.4%/y=9504; desktop `{}` em 41.7%/y=6071; 20× `{}` em 40.8%/y=9377.
+- O cálculo usa somente callbacks em que `scrollY` mudou. Duração ativa: mobile 5999.7 ms; desktop 5999.7 ms; controle 20× 5999.7 ms.
+- Observer de CLS instalado por `addInitScript`: estado inicial mobile/desktop/20× = `loading/loading/loading`; paints existentes no início = `0/0/0`.
+- Observer permaneceu conectado por 7286.9 ms no mobile, 6887.0 ms no desktop e 9825.1 ms no controle, cobrindo os 5999.7 ms de rolagem ativa e a espera posterior.
+- Entradas `layout-shift` entregues: mobile 0, desktop 0, controle 20× 0. Assim, `0.0000` significa ausência de evento capturado; não houve entrada de valor zero.
+- Imagens completas antes da rolagem, sem forçar `eager` nem `decode`: mobile 1/14, desktop 3/14, controle 20× 1/14.
+- Controle auxiliar de CPU, mesmo laço fixo: 4× 122.2 ms, 1× 10.5 ms, 20× 333.7 ms.
 
 ## Temas, imagens e contraste
 
